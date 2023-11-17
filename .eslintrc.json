@@ -7,6 +7,7 @@
         "@typescript-eslint/indent": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/method-signature-style": "off",
-        "@typescript-eslint/naming-convention": "off"
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslit/no-useless-return": "off"
     }
 }
