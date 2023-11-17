@@ -164,21 +164,40 @@ describe('SignUp Controller', () => {
     expect(httpResponse.body).toEqual(new ServerError())
   })
 
-  test('Should call AddAccount with correct values', () => {
+  test('Should return 500 if AddAccount throws', () => {
     const { sut, AddAccountStub } = makeSut()
-    const addSpy = jest.spyOn(AddAccountStub, 'add')
+    jest.spyOn(AddAccountStub, 'add').mockImplementationOnce(() => {
+      throw Error()
+    })
+    const httpRequest = {
+      body: {
+        email: 'any_email@email.com',
+        name: 'any_name',
+        password: 'any_password',
+        password_confirm: 'any_password'
+      }
+    }
+    const httpResponse = sut.handle(httpRequest)
+    expect(httpResponse.statuscode).toBe(500)
+    expect(httpResponse.body).toEqual(new ServerError())
+  })
+  test('Should Return 200 if a valid data is provided', () => {
+    const { sut } = makeSut()
     const httpRequest = {
       body: {
         email: 'valid_email@email.com',
         name: 'valid_name',
-        password: 'valid_password'
+        password: 'valid_password',
+        password_confirm: 'valid_password'
       }
     }
-    sut.handle(httpRequest)
-    expect(addSpy).toHaveBeenCalledWith({
-      name: 'valid_name',
-      email: 'valid_email@email.com',
-      password: 'valid_password'
+    const httpResponse = sut.handle(httpRequest)
+    expect(httpResponse.statuscode).toBe(200)
+    expect(httpResponse.body).toEqual({
+        id: 'valid_id',
+        email: 'valid_email@email.com',
+        name: 'valid_name',
+        password: 'valid_password'
     })
   })
 })

@@ -17,11 +17,6 @@ export class SignUpController implements Controller {
             const email = httpRequest.body.email
             const password_confirm = httpRequest.body.password_confirm
             const name = httpRequest.body.name
-            this.AddAccount.add({
-                name,
-                email,
-                password
-            })
             for (const field of requiredFields) {
                 if (!httpRequest.body[field]) {
                     return badRequest(new MissingParamError(field))
@@ -34,8 +29,13 @@ export class SignUpController implements Controller {
             if (!isValid) {
                 return badRequest(new InvalidParamError('email'))
             }
+            const account = this.AddAccount.add({
+                name,
+                email,
+                password
+            })
             return {
-            body: httpRequest,
+            body: account,
             statuscode: 200
             }
         } catch {
