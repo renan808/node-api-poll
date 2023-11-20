@@ -1,5 +1,5 @@
-import { ServerError } from '../errors/Server-error'
-import type { httpResponse } from '../protocols/http'
+import { ServerError } from '../errors'
+import type { httpResponse } from '../protocols'
 export const badRequest = (error: Error): httpResponse => ({
   statuscode: 400,
   body: error
