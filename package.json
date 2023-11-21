@@ -28,7 +28,9 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@types/validator": "^13.11.7",
     "bcryptjs": "^2.4.3",
-    "eslint-config-standard-with-typescript": "^39.1.1"
+    "eslint-config-standard-with-typescript": "^39.1.1",
+    "validator": "^13.11.0"
   }
 }
