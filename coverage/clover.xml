@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1701100937308" clover="3.2.0">
-  <project timestamp="1701100937308" name="All files">
+<coverage generated="1701101384009" clover="3.2.0">
+  <project timestamp="1701101384009" name="All files">
     <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2" elements="18" coveredelements="18" complexity="0" loc="14" ncloc="14" packages="1" files="1" classes="1"/>
     <file name="bcrypt-adapter.ts" path="C:\Users\cooki\Desktop\node-api\src\infra\cryptograpy\bcrypt-adapter.ts">
       <metrics statements="14" coveredstatements="14" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
