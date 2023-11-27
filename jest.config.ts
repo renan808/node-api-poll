@@ -7,6 +7,8 @@ const config: Config = {
 
   coverageDirectory: 'coverage',
 
+  preset: '@shelf/jest-mongodb',
+
   coverageProvider: 'v8',
 
   transform: {
