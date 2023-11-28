@@ -1,13 +1,13 @@
-import type { Config } from 'jest'
+module.exports = {
+  preset: '@shelf/jest-mongodb',
 
-const config: Config = {
   collectCoverage: true,
 
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
 
   coverageDirectory: 'coverage',
 
-  preset: '@shelf/jest-mongodb',
+  testEnvironment: 'node',
 
   coverageProvider: 'v8',
 
@@ -15,5 +15,3 @@ const config: Config = {
     '.+\\.ts$': 'ts-jest'
   }
 }
-
-export default config
