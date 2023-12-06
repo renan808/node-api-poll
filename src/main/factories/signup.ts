@@ -4,7 +4,7 @@ import { DbAddAccount } from '../../data/usecases/add-account/db-add-account'
 import { BcryptAdapter } from '../../infra/cryptograpy/bcrypt-adapter'
 import { AccountMongoRepository } from '../../infra/db/mongo-db/account-repository/account'
 
-const makeSignUpController = (): SignUpController => {
+export const makeSignUpController = (): SignUpController => {
     const salt = 12
     const emailValidatorAdapter = new EmailValidatorAdapter()
     const accountMongoRepository = new AccountMongoRepository()
