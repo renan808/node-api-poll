@@ -5,9 +5,9 @@ import { badRequest, serverError, ok } from '../../helpers/http-helper'
 export class SignUpController implements Controller {
     private readonly emailValidator: EmailValidator
     private readonly AddAccount: AddAccount
-    constructor (emailValidator: EmailValidator, AddAccountx: AddAccount) {
+    constructor (emailValidator: EmailValidator, AddAccount: AddAccount) {
         this.emailValidator = emailValidator
-        this.AddAccount = AddAccountx
+        this.AddAccount = AddAccount
     }
 
     async handle (httpRequest: httpRequest): Promise<httpResponse> {
