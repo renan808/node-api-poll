@@ -161,7 +161,7 @@ describe('SignUp Controller', () => {
     }
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statuscode).toBe(500)
-    expect(httpResponse.body).toEqual(new ServerError())
+    expect(httpResponse.body).toEqual(new ServerError('Internal Server Error'))
   })
 
   test('Should return 500 if AddAccount throws', async () => {
@@ -179,7 +179,7 @@ describe('SignUp Controller', () => {
     }
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse.statuscode).toBe(500)
-    expect(httpResponse.body).toEqual(new ServerError())
+    expect(httpResponse.body).toEqual(new ServerError('Internal Server Error'))
   })
   test('Should Return 200 if a valid data is provided', async () => {
     const { sut } = makeSut()
