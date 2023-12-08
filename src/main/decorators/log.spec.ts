@@ -13,7 +13,7 @@ const makeController = (): Controller => {
                 },
                 statuscode: 200
             }
-            return await new Promise(resolve => resolve(httpResponse))
+            return httpResponse
         }
     }
     return new ControllerStub()
@@ -47,5 +47,27 @@ describe('SignUp Controller', () => {
         const handleSpy = jest.spyOn(controllerStub, 'handle')
         await sut.handle(httpRequest)
         expect(handleSpy).toHaveBeenCalledWith(httpRequest)
+    })
+
+    test('Should return the same result of the controller', async () => {
+        const { sut } = makeSut()
+        const httpRequest: httpRequest = {
+            body: {
+                name: 'renan',
+                email: 'renan@renan.com',
+                password: '123',
+                password_confirm: '123'
+            }
+        }
+        const httpResponse = await sut.handle(httpRequest)
+        expect(httpResponse).toEqual({
+            body: {
+                name: 'renan',
+                email: 'renan@renan.com',
+                password: '123',
+                password_confirm: '123'
+            },
+            statuscode: 200
+        })
     })
 })
