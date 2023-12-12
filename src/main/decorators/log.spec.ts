@@ -1,20 +1,13 @@
-import { serverError } from '../../presentation/helpers/http-helper'
 import type { Controller, httpRequest, httpResponse } from '../../presentation/protocols'
 import { LogControllerDecorator } from './log'
 import type { LogErrorRepository } from '../../data/protocols/log-error-repository'
+import { ok, serverError } from '../../presentation/helpers/http-helper'
+import type { AccountModel } from '../../domain/models/account'
+
 const makeController = (): Controller => {
     class ControllerStub implements Controller {
         async handle (httpRequest: httpRequest): Promise<httpResponse> {
-            const httpResponse: httpResponse = {
-                body: {
-                    name: 'renan',
-                    email: 'renan@renan.com',
-                    password: '123',
-                    password_confirm: '123'
-                },
-                statuscode: 200
-            }
-            return httpResponse
+            return await new Promise(resolve => resolve(ok(makeFakeAccount())))
         }
     }
     return new ControllerStub()
@@ -28,6 +21,27 @@ const makeLogErrorRepository = (): LogErrorRepository => {
     }
     return new LogErrorRepositoryStub()
 }
+
+const makeFakeRequest = (): httpRequest => ({
+    body: {
+      email: 'any_email@email.com',
+      name: 'any_name',
+      password: 'any_password',
+      password_confirm: 'any_password'
+    }
+  })
+const makeFakeserverError = (): httpResponse => {
+    const fakeError = new Error()
+    fakeError.stack = 'any_stack'
+    return serverError(fakeError)
+}
+
+const makeFakeAccount = (): AccountModel => ({
+    id: 'valid_id',
+    email: 'valid_email@email.com',
+    name: 'valid_name',
+    password: 'valid_password'
+  })
 
 interface SutTypes {
     sut: LogControllerDecorator
@@ -49,57 +63,23 @@ const makeSut = (): SutTypes => {
 describe('SignUp Controller', () => {
     test('Should Call controller handle', async () => {
         const { sut, controllerStub } = makeSut()
-        const httpRequest: httpRequest = {
-            body: {
-                name: 'renan',
-                email: 'renan@renan.com',
-                password: '123',
-                password_confirm: '123'
-            }
-        }
         const handleSpy = jest.spyOn(controllerStub, 'handle')
-        await sut.handle(httpRequest)
-        expect(handleSpy).toHaveBeenCalledWith(httpRequest)
+        await sut.handle(makeFakeRequest())
+        expect(handleSpy).toHaveBeenCalledWith(makeFakeRequest())
     })
 
     test('Should return the same result of the controller', async () => {
         const { sut } = makeSut()
-        const httpRequest: httpRequest = {
-            body: {
-                name: 'renan',
-                email: 'renan@renan.com',
-                password: '123',
-                password_confirm: '123'
-            }
-        }
-        const httpResponse = await sut.handle(httpRequest)
-        expect(httpResponse).toEqual({
-            body: {
-                name: 'renan',
-                email: 'renan@renan.com',
-                password: '123',
-                password_confirm: '123'
-            },
-            statuscode: 200
-        })
+        const httpResponse = await sut.handle(makeFakeRequest())
+        expect(httpResponse).toEqual(ok(makeFakeAccount()))
     })
 
     test('Should call LogErrorRepository with correct Error if Controller returns a Server Error', async () => {
         const { sut, controllerStub, logErrorRepositoryStub } = makeSut()
-        const fakeError = new Error()
-        fakeError.stack = 'any_stack'
-        const error = serverError(fakeError)
         const LogSpy = jest.spyOn(logErrorRepositoryStub, 'log')
+        const error = makeFakeserverError()
         jest.spyOn(controllerStub, 'handle').mockReturnValueOnce(new Promise(resolve => resolve(error)))
-        const httpRequest: httpRequest = {
-            body: {
-                name: 'renan',
-                email: 'renan@renan.com',
-                password: '123',
-                password_confirm: '123'
-            }
-        }
-        await sut.handle(httpRequest)
+        await sut.handle(makeFakeRequest())
         expect(LogSpy).toHaveBeenCalledWith('any_stack')
     })
 })
