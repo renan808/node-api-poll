@@ -29,7 +29,8 @@ const makeFakeRequest = (): httpRequest => ({
       password: 'any_password',
       password_confirm: 'any_password'
     }
-  })
+})
+
 const makeFakeserverError = (): httpResponse => {
     const fakeError = new Error()
     fakeError.stack = 'any_stack'
@@ -41,7 +42,7 @@ const makeFakeAccount = (): AccountModel => ({
     email: 'valid_email@email.com',
     name: 'valid_name',
     password: 'valid_password'
-  })
+})
 
 interface SutTypes {
     sut: LogControllerDecorator
