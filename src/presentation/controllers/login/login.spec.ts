@@ -2,6 +2,7 @@ import { LoginController } from './login'
 import type { EmailValidator, httpRequest } from '../signup/signup-protocols'
 import { badRequest, serverError } from '../../helpers/http-helper'
 import { InvalidParamError } from '../../errors'
+import type { Authentication } from '../../../domain/use-cases/authentication'
 const makeEmailValidator = (): EmailValidator => {
     class EmailValidatorStub implements EmailValidator {
         isValid (email: string): boolean {
@@ -17,16 +18,29 @@ const makeFakeRequest = (): httpRequest => ({
         password: 'any_password'
     }
 })
+
+const makeAuthentication = (): Authentication => {
+    class AuthenticationStub implements Authentication {
+        async auth (email: string, password: string): Promise<string> {
+            return await new Promise(resolve => resolve('any_token'))
+        }
+    }
+    return new AuthenticationStub()
+}
+
 interface SutTypes {
     sut: LoginController
     emailValidatorStub: EmailValidator
+    authenticationStub: Authentication
 }
 const makeSut = (): SutTypes => {
     const emailValidatorStub = makeEmailValidator()
-    const sut = new LoginController(emailValidatorStub)
+    const authenticationStub = makeAuthentication()
+    const sut = new LoginController(emailValidatorStub, authenticationStub)
     return {
         sut,
-        emailValidatorStub
+        emailValidatorStub,
+        authenticationStub
     }
 }
 describe('SignUp Controller', () => {
@@ -73,5 +87,13 @@ describe('SignUp Controller', () => {
         })
         const httpResponse = await sut.handle(makeFakeRequest())
         expect(httpResponse).toEqual(serverError(new Error()))
+    })
+
+    test('Should calls Authentication with correct Values', async () => {
+        const { sut, authenticationStub } = makeSut()
+        const SpyAuth = jest.spyOn(authenticationStub, 'auth')
+        await sut.handle(makeFakeRequest())
+        const { email, password } = makeFakeRequest().body
+        expect(SpyAuth).toHaveBeenCalledWith(email, password)
     })
 })
