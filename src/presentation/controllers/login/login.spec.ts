@@ -1,11 +1,16 @@
 import { LoginController } from './login'
-
-const makeSut = (): any => {
-    return new LoginController()
+interface SutTypes {
+    sut: LoginController
+}
+const makeSut = (): SutTypes => {
+    const sut = new LoginController()
+    return {
+        sut
+    }
 }
 describe('SignUp Controller', () => {
     test('Should return 400 if no email is provided', async () => {
-        const sut = makeSut()
+        const { sut } = makeSut()
         const httpRequest = {
             body: {
                 password: 'any_password'
@@ -15,7 +20,7 @@ describe('SignUp Controller', () => {
         expect(httpResponse.statuscode).toBe(400)
     })
     test('Should return 400 if no password is provided', async () => {
-        const sut = makeSut()
+        const { sut } = makeSut()
         const httpRequest = {
             body: {
                 email: 'any_email@email.com'
