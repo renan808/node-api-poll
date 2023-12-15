@@ -1,8 +1,6 @@
-import type { Controller, httpRequest, httpResponse } from '../../protocols'
-import { badRequest, serverError } from '../../helpers/http-helper'
+import type { Controller, httpRequest, httpResponse, EmailValidator, Authentication } from './login-protocols'
+import { badRequest, serverError, unauthorized } from '../../helpers/http-helper'
 import { InvalidParamError, MissingParamError } from '../../errors'
-import type { EmailValidator } from '../signup/signup-protocols'
-import type { Authentication } from '../../../domain/use-cases/authentication'
 export class LoginController implements Controller {
     private readonly emailValidator: EmailValidator
     private readonly authentication: Authentication
@@ -15,17 +13,20 @@ export class LoginController implements Controller {
         try {
             const { email, password } = httpRequest.body
             if (!email) {
-                return await new Promise(resolve => resolve((badRequest(new MissingParamError('Email')))))
+                return badRequest(new MissingParamError('Email'))
             }
 
             if (!password) {
-                return await new Promise(resolve => resolve((badRequest(new MissingParamError('Password')))))
+                return badRequest(new MissingParamError('Password'))
             }
 
             if (!this.emailValidator.isValid(email)) {
-                return await new Promise(resolve => resolve((badRequest(new InvalidParamError('Email')))))
+                return badRequest(new InvalidParamError('Email'))
             }
-            await this.authentication.auth(email, password)
+            const token = await this.authentication.auth(email, password)
+            if (token === 'unauthorized' || null) {
+                return unauthorized()
+            }
             return {
                 statuscode: 200,
                 body: {
