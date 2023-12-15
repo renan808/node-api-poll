@@ -30,7 +30,7 @@ export class LoginController implements Controller {
             return {
                 statuscode: 200,
                 body: {
-                    ok: 'ok'
+                    token: 'any_token'
                 }
             }
         } catch (error) {
