@@ -1,8 +1,7 @@
-import type { httpResponse, httpRequest, Controller, EmailValidator, AddAccount, Validation } from './signup-protocols'
+import type { httpResponse, httpRequest, Controller, AddAccount, Validation } from './signup-protocols'
 import { badRequest, serverError, ok } from '../../helpers/http-helper'
 
 export class SignUpController implements Controller {
-    private readonly emailValidator: EmailValidator
     private readonly addAccount: AddAccount
     private readonly validation: Validation
     constructor (AddAccount: AddAccount, Validation: Validation) {
