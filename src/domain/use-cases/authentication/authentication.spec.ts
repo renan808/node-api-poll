@@ -1,5 +1,5 @@
 import type { AccountModel } from '../../models/account'
-import type { LoadAccountByEmailRepository } from '../../../data/protocols/LoadAccountByEmailRepository'
+import type { LoadAccountByEmailRepository } from '../../../data/protocols/db/LoadAccountByEmailRepository'
 import { DbAuthentication } from '../../../data/usecases/authentication/db-authentication'
 import type { AuthenticationModel } from '../authentication'
 
@@ -50,5 +50,15 @@ describe('DbAuthentication', () => {
         jest.spyOn(loadAccountByEmailRepository, 'load').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
         const promise = sut.auth(makeFakeAuthentication())
         await expect(promise).rejects.toThrow()
+    })
+
+    test('Should return null if LoadAccountByEmailRepository returns null', async () => {
+        const { sut, loadAccountByEmailRepository } = makeSut()
+        jest.spyOn(loadAccountByEmailRepository, 'load').mockReturnValueOnce(
+            // eslint-disable-next-line prefer-promise-reject-errors
+            new Promise((resolve, reject) => reject(null))
+        )
+        const promise = sut.auth(makeFakeAuthentication())
+        await expect(promise).rejects.toBeNull()
     })
 })
