@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1703102260292" clover="3.2.0">
-  <project timestamp="1703102260292" name="All files">
+<coverage generated="1703177659199" clover="3.2.0">
+  <project timestamp="1703177659199" name="All files">
     <metrics statements="332" coveredstatements="270" conditionals="67" coveredconditionals="52" methods="45" coveredmethods="31" elements="444" coveredelements="353" complexity="0" loc="332" ncloc="332" packages="15" files="32" classes="32"/>
     <package name="data.protocols">
       <metrics statements="11" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -312,9 +312,9 @@
         <line num="6" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="presentation.helpers">
+    <package name="presentation.helpers.http">
       <metrics statements="22" coveredstatements="22" conditionals="5" coveredconditionals="4" methods="4" coveredmethods="4"/>
-      <file name="http-helper.ts" path="C:\Users\cooki\Desktop\node-api\src\presentation\helpers\http-helper.ts">
+      <file name="http-helper.ts" path="C:\Users\cooki\Desktop\node-api\src\presentation\helpers\http\http-helper.ts">
         <metrics statements="22" coveredstatements="22" conditionals="5" coveredconditionals="4" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
