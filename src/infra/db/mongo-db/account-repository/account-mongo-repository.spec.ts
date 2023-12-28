@@ -1,6 +1,6 @@
 import type { Collection } from 'mongodb'
 import { Mongohelper } from '../helpers/mongo-helper'
-import { AccountMongoRepository } from './account'
+import { AccountMongoRepository } from './account-mongo-repository'
 describe('Account Mongo Repository', () => {
     let accountCollection: Collection
     beforeAll(async () => {
