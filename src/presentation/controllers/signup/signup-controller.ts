@@ -2,21 +2,17 @@ import type { httpResponse, httpRequest, Controller, AddAccount, Validation } fr
 import { badRequest, serverError, ok } from '../../helpers/http/http-helper'
 
 export class SignUpController implements Controller {
-    private readonly addAccount: AddAccount
-    private readonly validation: Validation
-    constructor (AddAccount: AddAccount, Validation: Validation) {
-        this.validation = Validation
-        this.addAccount = AddAccount
+    constructor (private readonly AddAccount: AddAccount, private readonly Validation: Validation) {
     }
 
     async handle (httpRequest: httpRequest): Promise<httpResponse> {
         try {
-            const error = this.validation.validate(httpRequest.body)
+            const error = this.Validation.validate(httpRequest.body)
             if (error) {
                 return badRequest(error)
             }
             const { name, password, email } = httpRequest.body
-            const account = await this.addAccount.add({
+            const account = await this.AddAccount.add({
                 name,
                 email,
                 password
