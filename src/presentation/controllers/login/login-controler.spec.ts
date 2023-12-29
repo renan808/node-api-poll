@@ -71,7 +71,7 @@ describe('SignUp Controller', () => {
         expect(httpResponse).toEqual(serverError(new Error()))
     })
 
-    test('Should return 401 if invalid credentials are provided', async () => {
+    test('Should return 200 on success', async () => {
         const { sut } = makeSut()
         const httpResponse = await sut.handle(makeFakeRequest())
         expect(httpResponse).toEqual(ok({

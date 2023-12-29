@@ -1,5 +1,5 @@
 import type { Controller, httpRequest, httpResponse, Authentication } from './login-controler-protocols'
-import { badRequest, serverError, unauthorized } from '../../helpers/http/http-helper'
+import { badRequest, serverError, unauthorized, ok } from '../../helpers/http/http-helper'
 import type { Validation } from '../signup/signup-controler-protocols'
 export class LoginController implements Controller {
     constructor (private readonly Authentication: Authentication, private readonly Validation: Validation) {
@@ -15,13 +15,11 @@ export class LoginController implements Controller {
             if (token === 'unauthorized' || null) {
                 return unauthorized()
             }
-            return {
-                statuscode: 200,
-                body: {
-                    token: 'any_token'
-                }
-            }
+            return ok({
+                token: 'any_token'
+            })
         } catch (error) {
+            console.log(error)
             return serverError(error)
         }
     }

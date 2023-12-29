@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1703874668026" clover="3.2.0">
-  <project timestamp="1703874668026" name="All files">
-    <metrics statements="390" coveredstatements="303" conditionals="86" coveredconditionals="67" methods="56" coveredmethods="37" elements="532" coveredelements="407" complexity="0" loc="390" ncloc="390" packages="19" files="40" classes="40"/>
+<coverage generated="1703885071652" clover="3.2.0">
+  <project timestamp="1703885071652" name="All files">
+    <metrics statements="388" coveredstatements="304" conditionals="87" coveredconditionals="68" methods="56" coveredmethods="38" elements="531" coveredelements="410" complexity="0" loc="388" ncloc="388" packages="19" files="40" classes="40"/>
     <package name="data.protocols.criptography">
       <metrics statements="9" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="encrypter.ts" path="C:\Users\cooki\Desktop\node-api\src\data\protocols\criptography\encrypter.ts">
@@ -99,22 +99,22 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="11" type="stmt"/>
-        <line num="6" count="11" type="stmt"/>
-        <line num="7" count="11" type="stmt"/>
-        <line num="8" count="11" type="stmt"/>
-        <line num="9" count="11" type="stmt"/>
+        <line num="5" count="15" type="stmt"/>
+        <line num="6" count="15" type="stmt"/>
+        <line num="7" count="15" type="stmt"/>
+        <line num="8" count="15" type="stmt"/>
+        <line num="9" count="15" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="12" count="11" type="stmt"/>
-        <line num="13" count="9" type="cond" truecount="1" falsecount="0"/>
-        <line num="14" count="9" type="stmt"/>
-        <line num="15" count="9" type="cond" truecount="2" falsecount="0"/>
-        <line num="16" count="7" type="stmt"/>
-        <line num="17" count="6" type="cond" truecount="1" falsecount="0"/>
-        <line num="18" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="5" type="stmt"/>
-        <line num="20" count="9" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="14" count="10" type="stmt"/>
+        <line num="15" count="10" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="8" type="stmt"/>
+        <line num="17" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="18" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="6" type="stmt"/>
+        <line num="20" count="10" type="stmt"/>
         <line num="21" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="22" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
@@ -170,7 +170,7 @@
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="7" count="11" type="stmt"/>
+        <line num="7" count="15" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="10" count="4" type="stmt"/>
@@ -178,9 +178,9 @@
         <line num="12" count="3" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="4" type="stmt"/>
-        <line num="16" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="17" count="3" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="16" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="4" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
       </file>
     </package>
@@ -192,19 +192,19 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="3" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="9" count="3" type="stmt"/>
-        <line num="10" count="3" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
       </file>
     </package>
     <package name="infra.db.mongo-db.account-repository">
-      <metrics statements="25" coveredstatements="22" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
+      <metrics statements="25" coveredstatements="25" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
       <file name="account-mongo-repository.ts" path="C:\Users\cooki\Desktop\node-api\src\infra\db\mongo-db\account-repository\account-mongo-repository.ts">
-        <metrics statements="25" coveredstatements="22" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="2"/>
+        <metrics statements="25" coveredstatements="25" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -220,15 +220,15 @@
         <line num="13" count="2" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="17" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
+        <line num="21" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
       </file>
     </package>
@@ -254,18 +254,18 @@
         <line num="16" count="5" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="13" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="16" type="cond" truecount="1" falsecount="0"/>
         <line num="20" count="1" type="stmt"/>
         <line num="21" count="1" type="stmt"/>
-        <line num="22" count="13" type="stmt"/>
-        <line num="23" count="13" type="stmt"/>
+        <line num="22" count="16" type="stmt"/>
+        <line num="23" count="16" type="stmt"/>
         <line num="24" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="25" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="25" count="5" type="cond" truecount="1" falsecount="0"/>
         <line num="26" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
-        <line num="28" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="29" count="3" type="stmt"/>
-        <line num="30" count="3" type="stmt"/>
+        <line num="28" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="29" count="4" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
       </file>
     </package>
@@ -289,42 +289,40 @@
       </file>
     </package>
     <package name="presentation.controllers.login">
-      <metrics statements="30" coveredstatements="28" conditionals="10" coveredconditionals="9" methods="3" coveredmethods="2"/>
+      <metrics statements="28" coveredstatements="26" conditionals="10" coveredconditionals="9" methods="3" coveredmethods="2"/>
       <file name="login-controler-protocols.ts" path="C:\Users\cooki\Desktop\node-api\src\presentation\controllers\login\login-controler-protocols.ts">
         <metrics statements="2" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="2" count="0" type="stmt"/>
       </file>
       <file name="login-controller.ts" path="C:\Users\cooki\Desktop\node-api\src\presentation\controllers\login\login-controller.ts">
-        <metrics statements="28" coveredstatements="28" conditionals="9" coveredconditionals="9" methods="2" coveredmethods="2"/>
+        <metrics statements="26" coveredstatements="26" conditionals="9" coveredconditionals="9" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="6" count="6" type="stmt"/>
+        <line num="6" count="10" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="9" count="6" type="stmt"/>
-        <line num="10" count="6" type="stmt"/>
-        <line num="11" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="7" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="11" count="7" type="cond" truecount="1" falsecount="0"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="14" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="6" type="cond" truecount="3" falsecount="0"/>
+        <line num="14" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="15" count="7" type="cond" truecount="3" falsecount="0"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
-        <line num="18" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="3" type="stmt"/>
-        <line num="20" count="3" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="22" count="3" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="24" count="6" type="cond" truecount="1" falsecount="0"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="18" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="7" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
-        <line num="27" count="6" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
       </file>
     </package>
     <package name="presentation.controllers.signup">
@@ -429,9 +427,9 @@
         <line num="12" count="5" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="15" count="8" type="stmt"/>
-        <line num="16" count="8" type="stmt"/>
-        <line num="17" count="8" type="stmt"/>
+        <line num="15" count="12" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="20" count="2" type="stmt"/>
@@ -465,14 +463,14 @@
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="7" count="11" type="stmt"/>
+        <line num="7" count="15" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="10" count="5" type="stmt"/>
-        <line num="11" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="11" count="6" type="cond" truecount="1" falsecount="0"/>
         <line num="12" count="2" type="stmt"/>
         <line num="13" count="2" type="stmt"/>
-        <line num="14" count="5" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
       </file>
       <file name="index.ts" path="C:\Users\cooki\Desktop\node-api\src\presentation\helpers\validators\index.ts">
@@ -489,13 +487,13 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="30" type="stmt"/>
+        <line num="5" count="38" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="6" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="8" type="cond" truecount="1" falsecount="0"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
-        <line num="11" count="6" type="stmt"/>
+        <line num="11" count="8" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
       </file>
       <file name="validation-composite.ts" path="C:\Users\cooki\Desktop\node-api\src\presentation\helpers\validators\validation-composite.ts">
@@ -504,16 +502,16 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="7" type="stmt"/>
+        <line num="5" count="11" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="8" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="9" count="10" type="stmt"/>
-        <line num="10" count="10" type="cond" truecount="1" falsecount="0"/>
+        <line num="8" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="9" count="13" type="stmt"/>
+        <line num="10" count="13" type="cond" truecount="1" falsecount="0"/>
         <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
-        <line num="13" count="10" type="stmt"/>
-        <line num="14" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="13" type="stmt"/>
+        <line num="14" count="3" type="cond" truecount="1" falsecount="0"/>
         <line num="15" count="1" type="stmt"/>
       </file>
       <file name="validation.ts" path="C:\Users\cooki\Desktop\node-api\src\presentation\helpers\validators\validation.ts">
@@ -564,8 +562,8 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="5" count="4" type="stmt"/>
-        <line num="6" count="4" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
       </file>
     </package>
