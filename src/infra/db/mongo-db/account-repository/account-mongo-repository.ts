@@ -18,8 +18,9 @@ export class AccountMongoRepository implements AddAccountRepository, LoadAccount
         return Mongohelper.map(account)
     }
 
-    async updateToken (id: string, token: string): Promise<void> {
+    async updateToken (id: any, token: string): Promise<void> {
         const accountCollection = await Mongohelper.getCollection('accounts')
-        await accountCollection.updateOne({ id }, { $set: { acessToken: token } })
+        const acc_updated = await accountCollection.updateOne({ _id: id }, { $set: { acessToken: token } })
+        console.log(acc_updated)
     }
 }

@@ -16,7 +16,7 @@ export class LoginController implements Controller {
                 return unauthorized()
             }
             return ok({
-                token: 'any_token'
+                token
             })
         } catch (error) {
             console.log(error)

@@ -3,7 +3,7 @@ import { RequiredFieldValidation, ValidationComposite, CompareFieldValidation, E
 import type { Validation } from '../../../presentation/helpers/validators/validation'
 import { InvalidParamError } from '../../../presentation/errors'
 import type { EmailValidator } from '../../../presentation/protocols/emailValidator'
-
+import { ExistInDB } from '../../../presentation/helpers/validators/exist-in-db-validation'
 jest.mock('../../../presentation/helpers/validators/validation-composite')
 const makeEmailvalidator = (): EmailValidator => {
   class EmailValidatorStub implements EmailValidator {
@@ -24,6 +24,7 @@ describe('SignUpValidation Factory', () => {
         const compareFieldValidation = new CompareFieldValidation('password', 'password_confirm')
         validations.push(compareFieldValidation)
         validations.push(new EmailValidation('email', makeEmailvalidator()))
+        validations.push(new ExistInDB())
         expect(ValidationComposite).toHaveBeenCalledWith(validations)
     })
 

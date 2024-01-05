@@ -26,6 +26,6 @@ export const Mongohelper = {
             return null
         }
         const { _id, ...collectionWithoutId } = collection
-        return Object.assign({}, collectionWithoutId, { id: _id.toString() })
+        return Object.assign({}, collectionWithoutId, { id: _id })
     }
 }
