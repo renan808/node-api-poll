@@ -1,6 +1,7 @@
 import { Mongohelper } from '../../../infra/db/mongo-db/helpers/mongo-helper'
 import type { Collection } from 'mongodb'
 import { ExistInDB } from './exist-in-db-validation'
+import { InvalidParamError } from '../../errors'
 const makeSut = (): ExistInDB => {
     return new ExistInDB()
 }
@@ -25,7 +26,7 @@ describe('ExistInDB Validation', () => {
             email: 'fakeEmail@gmail.com',
             password: 'fakepass123'
         })
-        const error = sut.validate({ email: 'fakeEmail@gmail.com' })
-        await expect(error).rejects.toThrow()
+        const error = await sut.validate({ email: 'fakeEmail@gmail.com' })
+        expect(error).toEqual(new InvalidParamError('Email already exists'))
     })
 })

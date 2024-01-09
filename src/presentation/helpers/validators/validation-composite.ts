@@ -2,9 +2,9 @@ import type { Validation } from './validation'
 
 export class ValidationComposite implements Validation {
     constructor (private readonly Validations: Validation[]) {}
-    validate (input: any): any {
+    async validate (input: any): Promise<any> {
         for (const validation of this.Validations) {
-            const error = validation.validate(input)
+            const error = await validation.validate(input)
             if (error) {
                 return error
             }
