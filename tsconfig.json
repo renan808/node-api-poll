@@ -1,10 +1,16 @@
 { 
     "compilerOptions": {
         "strictNullChecks": true,
-        "outDir": "./dist",
+        "outDir": "dist",
         "module": "CommonJS",
         "target": "ES6",
-        "esModuleInterop": true,
-        "allowJs": true,
-    }
+        "esModuleInterop": true
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "**/*.spec.ts",
+        "**/*.test.ts"
+    ]
 }
