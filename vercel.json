@@ -1,6 +1,12 @@
 {
     "name": "survey-api",
     "version": 2,
+    "builds": [
+        {
+            "src": "src/main/server.ts",
+            "use": "@vercel/node"
+        }
+    ],
     "public": false,
     "routes": [
         {
