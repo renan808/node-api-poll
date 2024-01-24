@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc",
-    "dev": "sucrase-node src/main/server.ts",
+    "up": "npm run build && docker-compose up -d",
+    "down": "docker-compose down",
     "test": "jest --passWithNoTests  --silent --runInBand",
     "test:verbose": "jest --passWithNoTests",
     "test:integration": "npm test -- --watch -c jest-integration-config.ts",

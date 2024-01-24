@@ -17,5 +17,6 @@ services:
     volumes:
       - ./dist:/usr/src/node-api-survey/dist
     ports:
-      -"5050:5050"
-    links: mongo
+      - "5050:5050"
+    links:
+      - mongo
