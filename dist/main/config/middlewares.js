@@ -6,3 +6,4 @@ exports.default = (app) => {
     app.use(middlewares_1.cors);
     app.use(middlewares_1.contentType);
 };
+//# sourceMappingURL=middlewares.js.map

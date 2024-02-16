@@ -54,3 +54,4 @@ exports.Mongohelper = {
         return Object.assign({}, collectionWithoutId, { id: _id });
     }
 };
+//# sourceMappingURL=mongo-helper.js.map

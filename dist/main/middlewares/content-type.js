@@ -6,3 +6,4 @@ const contentType = (req, res, next) => {
     next();
 };
 exports.contentType = contentType;
+//# sourceMappingURL=content-type.js.map

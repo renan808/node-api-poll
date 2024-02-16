@@ -8,3 +8,4 @@ class InvalidParamError extends Error {
     }
 }
 exports.InvalidParamError = InvalidParamError;
+//# sourceMappingURL=invalid-param-error.js.map

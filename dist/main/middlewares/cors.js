@@ -8,3 +8,4 @@ const cors = (req, res, next) => {
     next();
 };
 exports.cors = cors;
+//# sourceMappingURL=cors.js.map

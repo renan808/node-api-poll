@@ -46,3 +46,4 @@ mongo_helper_1.Mongohelper.connect(env_1.default.mongoUrl).then(() => __awaiter(
 })).catch((error) => {
     console.log(error);
 });
+//# sourceMappingURL=server.js.map

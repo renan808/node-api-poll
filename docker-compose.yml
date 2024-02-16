@@ -7,16 +7,18 @@ services:
     volumes:
       - ./data:/data/db
     ports:
-      - "27017:27017"
+      - "27018:27018"
   api:
     container_name: api-survey-container
-    build: .
+    image: node:18
+    working_dir: /usr/src/node-api-survey
     restart: always
-    image: survey-api
-    command: npm start
+    command: bash -c "npm install --only=prod && npm run debug"
     volumes:
-      - ./dist:/usr/src/node-api-survey/dist
+      - ./dist/:/usr/src/node-api-survey/dist/
+      - ./package.json:/usr/src/node-api-survey/package.json
     ports:
       - "5050:5050"
+      - "9222:9222"
     links:
       - mongo

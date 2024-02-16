@@ -20,3 +20,4 @@ __exportStar(require("../../../domain/use-cases/authentication"), exports);
 __exportStar(require("../../protocols/criptography/hash-comparer"), exports);
 __exportStar(require("../../protocols/criptography/encrypter"), exports);
 __exportStar(require("../../protocols/db/account/updateAcessTokenRepository"), exports);
+//# sourceMappingURL=db-authentication-protocols.js.map

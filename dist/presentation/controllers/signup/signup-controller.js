@@ -12,9 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SignUpController = void 0;
 const http_helper_1 = require("../../helpers/http/http-helper");
 class SignUpController {
-    constructor(AddAccount, Validation) {
-        this.AddAccount = AddAccount;
+    constructor(Validation, AddAccount, Authentication) {
         this.Validation = Validation;
+        this.AddAccount = AddAccount;
+        this.Authentication = Authentication;
     }
     handle(httpRequest) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -24,12 +25,14 @@ class SignUpController {
                     return (0, http_helper_1.badRequest)(error);
                 }
                 const { name, password, email } = httpRequest.body;
-                const account = yield this.AddAccount.add({
+                yield this.AddAccount.add({
                     name,
                     email,
                     password
                 });
-                return (0, http_helper_1.ok)(account);
+                const account = { email, password };
+                const token = yield this.Authentication.auth(account);
+                return (0, http_helper_1.ok)(token);
             }
             catch (error) {
                 return (0, http_helper_1.serverError)(error);
@@ -38,3 +41,4 @@ class SignUpController {
     }
 }
 exports.SignUpController = SignUpController;
+//# sourceMappingURL=signup-controller.js.map

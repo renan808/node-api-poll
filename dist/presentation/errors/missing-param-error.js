@@ -8,3 +8,4 @@ class MissingParamError extends Error {
     }
 }
 exports.MissingParamError = MissingParamError;
+//# sourceMappingURL=missing-param-error.js.map

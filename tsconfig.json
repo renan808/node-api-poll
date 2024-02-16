@@ -1,18 +1,18 @@
 { 
     "compilerOptions": {
-        "baseUrl": "src/",
         "strictNullChecks": true,
         "outDir": "./dist",
         "rootDir": "./src",
         "module": "CommonJS",
         "target": "ES6",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "sourceMap": true
     },
     "include": [
         "src"
     ],
     "exclude": [
         "**/*.spec.ts",
-        "**/*.test.ts"
+        "**/*.test.ts",
     ]
 }
