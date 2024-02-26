@@ -1,5 +1,5 @@
 import { ValidationComposite } from './validation-composite'
-import type { Validation } from './validation'
+import type { Validation } from '../../presentation/protocols/validation'
 import { MissingParamError } from '../../presentation/errors'
 
 const makeValidation = (): Validation => {
