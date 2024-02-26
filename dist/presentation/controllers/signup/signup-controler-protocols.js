@@ -17,5 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("../../protocols"), exports);
 __exportStar(require("../../../domain/use-cases/add-account"), exports);
 __exportStar(require("../../../domain/models/account"), exports);
-__exportStar(require("../../helpers/validators/validation"), exports);
+__exportStar(require("../../../validation/validators/validation"), exports);
 //# sourceMappingURL=signup-controler-protocols.js.map

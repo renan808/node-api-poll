@@ -35,6 +35,9 @@ class SignUpController {
                 return (0, http_helper_1.ok)(token);
             }
             catch (error) {
+                if (error.message === 'email already exists.') {
+                    return (0, http_helper_1.badRequest)(error);
+                }
                 return (0, http_helper_1.serverError)(error);
             }
         });

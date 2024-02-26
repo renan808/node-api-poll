@@ -11,15 +11,22 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DbAddAccount = void 0;
 class DbAddAccount {
-    constructor(hasher, addAccountRepository) {
+    constructor(hasher, addAccountRepository, LoadAccountByEmailRepository) {
         this.hasher = hasher;
         this.addAccountRepository = addAccountRepository;
+        this.LoadAccountByEmailRepository = LoadAccountByEmailRepository;
     }
     add(accountData) {
         return __awaiter(this, void 0, void 0, function* () {
+            const account = yield this.LoadAccountByEmailRepository.loadByEmail(accountData.email);
+            if (account) {
+                // eslint-disable-next-line prefer-promise-reject-errors
+                return yield new Promise((resolve, reject) => reject(new Error('email already exists.')));
+            }
             const hashedPass = yield this.hasher.hash(accountData.password);
-            const account = yield this.addAccountRepository.add(Object.assign({}, accountData, { password: hashedPass }));
-            return account;
+            const newAccount = yield this.addAccountRepository.add(Object.assign({}, accountData, { password: hashedPass }));
+            console.log(newAccount);
+            return newAccount;
         });
     }
 }

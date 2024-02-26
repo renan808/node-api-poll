@@ -13,7 +13,7 @@ const makeSignUpController = () => {
     const salt = 12;
     const accountMongoRepository = new account_mongo_repository_1.AccountMongoRepository();
     const bcryptAdapter = new bcrypt_adapter_1.BcryptAdapter(salt);
-    const dbAddAccount = new db_add_account_1.DbAddAccount(bcryptAdapter, accountMongoRepository);
+    const dbAddAccount = new db_add_account_1.DbAddAccount(bcryptAdapter, accountMongoRepository, accountMongoRepository);
     const signUpcontroller = new signup_controller_1.SignUpController((0, signup_validation_factory_1.makeSignUpValidation)(), dbAddAccount, (0, db_authentication_factory_1.makeDbAuthentication)());
     const logMongoRepository = new log_mongo_repository_1.LogMongoRepository();
     return new log_controller_decorator_1.LogControllerDecorator(signUpcontroller, logMongoRepository);

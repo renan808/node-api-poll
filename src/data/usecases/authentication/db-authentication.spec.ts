@@ -53,23 +53,23 @@ interface SutTypes {
     loadAccountByEmailRepository: LoadAccountByEmailRepository
     hashComparerStub: HashComparer
     encrypterStub: Encrypter
-    upDateAcessTokenRepositoryStub: UpdateAcessTokenRepository
+    UpdateAcessTokenRepositoryStub: UpdateAcessTokenRepository
 }
 const makeSut = (): SutTypes => {
-    const upDateAcessTokenRepositoryStub = makeUpdateAcessTokenRepository()
+    const UpdateAcessTokenRepositoryStub = makeUpdateAcessTokenRepository()
     const loadAccountByEmailRepository = makeLoadAccountByEmailRepositoryStub()
     const hashComparerStub = makeHashComparerStub()
     const encrypterStub = makeEncrypter()
     const sut = new DbAuthentication(loadAccountByEmailRepository,
         hashComparerStub,
         encrypterStub,
-        upDateAcessTokenRepositoryStub)
+        UpdateAcessTokenRepositoryStub)
     return {
         sut,
         loadAccountByEmailRepository,
         hashComparerStub,
         encrypterStub,
-        upDateAcessTokenRepositoryStub
+        UpdateAcessTokenRepositoryStub
     }
 }
 
@@ -144,15 +144,15 @@ describe('DbAuthentication Usecase', () => {
     })
 
     test('Should call UpdateAcessTokenRepository with correct values', async () => {
-        const { sut, upDateAcessTokenRepositoryStub } = makeSut()
-        const updateSpy = jest.spyOn(upDateAcessTokenRepositoryStub, 'updateToken')
+        const { sut, UpdateAcessTokenRepositoryStub } = makeSut()
+        const updateSpy = jest.spyOn(UpdateAcessTokenRepositoryStub, 'updateToken')
         await sut.auth(makeFakeAuthentication())
         expect(updateSpy).toHaveBeenCalledWith('any_id', 'any_token')
     })
 
     test('Should throw if UpdateAcessTokenRepository throws', async () => {
-        const { sut, upDateAcessTokenRepositoryStub } = makeSut()
-        jest.spyOn(upDateAcessTokenRepositoryStub, 'updateToken').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+        const { sut, UpdateAcessTokenRepositoryStub } = makeSut()
+        jest.spyOn(UpdateAcessTokenRepositoryStub, 'updateToken').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
         const promise = sut.auth(makeFakeAuthentication())
         await expect(promise).rejects.toThrow()
     })

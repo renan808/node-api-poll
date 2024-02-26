@@ -18,4 +18,6 @@ __exportStar(require("../../../domain/models/account"), exports);
 __exportStar(require("../../../domain/use-cases/add-account"), exports);
 __exportStar(require("../../protocols/criptography/hasher"), exports);
 __exportStar(require("../../protocols/db/account/add-account-repository"), exports);
+__exportStar(require("../../protocols/db/account/LoadAccountByEmailRepository"), exports);
+__exportStar(require("../../../domain/use-cases/authentication"), exports);
 //# sourceMappingURL=db-add-account-protocols.js.map

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.makeLoginValidation = void 0;
-const index_1 = require("../../../../presentation/helpers/validators/index");
+const index_1 = require("../../../../validation/validators/index");
 const email_validator_adapter_1 = require("../../../../utils/email-validator-adapter");
 const makeLoginValidation = () => {
     const validations = [];

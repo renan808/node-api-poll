@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RequiredFieldValidation = void 0;
-const errors_1 = require("../../errors");
+const errors_1 = require("../../presentation/errors");
 class RequiredFieldValidation {
     constructor(FieldName) {
         this.FieldName = FieldName;

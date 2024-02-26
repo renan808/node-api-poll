@@ -25,6 +25,9 @@ export class SignUpController implements Controller {
             const token = await this.Authentication.auth(account)
             return ok(token)
         } catch (error) {
+            if (error.message === 'email already exists.') {
+                return badRequest(error)
+            }
             return serverError(error)
         }
     }
