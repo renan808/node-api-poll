@@ -10,6 +10,7 @@ class RequiredFieldValidation {
         if (!input[this.FieldName]) {
             return new errors_1.MissingParamError(this.FieldName);
         }
+        return null;
     }
 }
 exports.RequiredFieldValidation = RequiredFieldValidation;

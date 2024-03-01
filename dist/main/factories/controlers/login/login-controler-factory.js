@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.makeLoginController = void 0;
-const login_controller_1 = require("../../../../presentation/controllers/login/login-controller");
+const login_controller_1 = require("../../../../presentation/controllers/login/login/login-controller");
 const log_controller_decorator_1 = require("../../../decorators/log-controller-decorator");
 const log_mongo_repository_1 = require("../../../../infra/db/mongo-db/log/log-mongo-repository");
 const login_validation_factory_1 = require("./login-validation-factory");

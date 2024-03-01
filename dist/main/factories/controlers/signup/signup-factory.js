@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.makeSignUpController = void 0;
-const signup_controller_1 = require("../../../../presentation/controllers/signup/signup-controller");
+const signup_controller_1 = require("../../../../presentation/controllers/login/signup/signup-controller");
 const db_add_account_1 = require("../../../../data/usecases/add-account/db-add-account");
 const bcrypt_adapter_1 = require("../../../../infra/cryptograpy/bcrypt-adapter/bcrypt-adapter");
 const account_mongo_repository_1 = require("../../../../infra/db/mongo-db/account-repository/account-mongo-repository");

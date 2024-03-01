@@ -11,6 +11,7 @@ class CompareFieldValidation {
         if (input[this.FieldName] !== input[this.FieldToCompareName]) {
             return new errors_1.InvalidParamError(this.FieldToCompareName);
         }
+        return null;
     }
 }
 exports.CompareFieldValidation = CompareFieldValidation;

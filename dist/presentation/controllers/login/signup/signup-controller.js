@@ -9,34 +9,39 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LoginController = void 0;
-const http_helper_1 = require("../../helpers/http/http-helper");
-class LoginController {
-    constructor(Authentication, Validation) {
-        this.Authentication = Authentication;
+exports.SignUpController = void 0;
+const http_helper_1 = require("../../../helpers/http/http-helper");
+class SignUpController {
+    constructor(Validation, AddAccount, Authentication) {
         this.Validation = Validation;
+        this.AddAccount = AddAccount;
+        this.Authentication = Authentication;
     }
     handle(httpRequest) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const error = yield this.Validation.validate(httpRequest.body);
+                const error = this.Validation.validate(httpRequest.body);
                 if (error) {
                     return (0, http_helper_1.badRequest)(error);
                 }
-                const token = yield this.Authentication.auth(httpRequest.body);
-                if (token === 'unauthorized' || null) {
-                    return (0, http_helper_1.unauthorized)();
-                }
-                return (0, http_helper_1.ok)({
-                    token
+                const { name, password, email } = httpRequest.body;
+                yield this.AddAccount.add({
+                    name,
+                    email,
+                    password
                 });
+                const account = { email, password };
+                const token = yield this.Authentication.auth(account);
+                return (0, http_helper_1.ok)(token);
             }
             catch (error) {
-                console.log(error);
+                if (error.message === 'email already exists.') {
+                    return (0, http_helper_1.badRequest)(error);
+                }
                 return (0, http_helper_1.serverError)(error);
             }
         });
     }
 }
-exports.LoginController = LoginController;
-//# sourceMappingURL=login-controller.js.map
+exports.SignUpController = SignUpController;
+//# sourceMappingURL=signup-controller.js.map

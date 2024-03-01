@@ -12,6 +12,7 @@ class EmailValidation {
         if (!isValid) {
             return new errors_1.InvalidParamError(this.FieldName);
         }
+        return null;
     }
 }
 exports.EmailValidation = EmailValidation;
