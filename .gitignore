@@ -2,6 +2,4 @@ coverage
 node_modules
 .vercel
 vercel.json
-data
-gcm-diagnose.log
-globalConfig.json
+/data
