@@ -66,7 +66,7 @@ const makeSut = (): sutTypes => {
     }
 }
 
-describe('dbAddAccountUsecase', () => {
+describe('dbAddAccount Usecase', () => {
     test('Should call LoadAccountByEmailRepositoryStub with correct email', async () => {
         const { sut, loadAccountByEmailRepositoryStub } = makeSut()
         const loadSpy = jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail')
