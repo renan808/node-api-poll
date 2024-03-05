@@ -9,28 +9,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddSurveyController = void 0;
-const http_helper_1 = require("../../../helpers/http/http-helper");
-class AddSurveyController {
-    constructor(validation, addSurvey) {
-        this.validation = validation;
-        this.addSurvey = addSurvey;
+exports.DbAddSurvey = void 0;
+class DbAddSurvey {
+    constructor(addSurveyRepository) {
+        this.addSurveyRepository = addSurveyRepository;
     }
-    handle(httpRequest) {
+    add(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const error = this.validation.validate(httpRequest.body);
-                if (error) {
-                    return (0, http_helper_1.badRequest)(error);
-                }
-                this.addSurvey.add(httpRequest.body);
-                return (0, http_helper_1.ok)(httpRequest.body);
-            }
-            catch (error) {
-                return (0, http_helper_1.serverError)(error);
-            }
+            yield this.addSurveyRepository.add(data);
         });
     }
 }
-exports.AddSurveyController = AddSurveyController;
-//# sourceMappingURL=add-survey-controller.js.map
+exports.DbAddSurvey = DbAddSurvey;
+//# sourceMappingURL=db-add-survey.js.map
