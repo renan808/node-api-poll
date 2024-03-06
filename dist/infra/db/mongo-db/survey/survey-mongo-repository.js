@@ -14,7 +14,7 @@ const mongo_helper_1 = require("../helpers/mongo-helper");
 class SurveyMongoRepository {
     add(surveyData) {
         return __awaiter(this, void 0, void 0, function* () {
-            const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('Surveys');
+            const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
             yield surveyCollection.insertOne(surveyData);
         });
     }

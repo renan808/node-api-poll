@@ -16,7 +16,7 @@ describe('Survey Mongo Repository', () => {
         await Mongohelper.disconnect()
     })
     beforeEach(async () => {
-        surveyCollection = await Mongohelper.getCollection('Surveys')
+        surveyCollection = await Mongohelper.getCollection('surveys')
     })
     test('Should add one survey on success', async () => {
         const sut = makeSut()

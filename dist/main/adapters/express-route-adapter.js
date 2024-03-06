@@ -16,7 +16,7 @@ const adaptRoute = (controller) => {
             body: req.body
         };
         const httpResponse = yield controller.handle(httpRequest);
-        if (httpResponse.statuscode === 200) {
+        if (httpResponse.statuscode >= 200 || httpResponse.statuscode <= 299) {
             res.status(httpResponse.statuscode).json(httpResponse.body);
         }
         else {

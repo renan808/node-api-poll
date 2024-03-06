@@ -8,7 +8,7 @@ const account_mongo_repository_1 = require("../../../../infra/db/mongo-db/accoun
 const log_controller_decorator_1 = require("../../../decorators/log-controller-decorator");
 const log_mongo_repository_1 = require("../../../../infra/db/mongo-db/log/log-mongo-repository");
 const signup_validation_factory_1 = require("./signup-validation-factory");
-const db_authentication_factory_1 = require(".././../use-cases/db-authentication-factory");
+const db_authentication_factory_1 = require("../../use-cases/db-authentication-factory");
 const makeSignUpController = () => {
     const salt = 12;
     const accountMongoRepository = new account_mongo_repository_1.AccountMongoRepository();
@@ -19,4 +19,4 @@ const makeSignUpController = () => {
     return new log_controller_decorator_1.LogControllerDecorator(signUpcontroller, logMongoRepository);
 };
 exports.makeSignUpController = makeSignUpController;
-//# sourceMappingURL=signup-factory.js.map
+//# sourceMappingURL=signup-controller-factory.js.map
