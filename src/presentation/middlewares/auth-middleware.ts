@@ -10,6 +10,6 @@ export class AuthMiddleware implements Middleware {
         if (token) {
             await this.loadAccountByToken.load(token)
         }
-        return await new Promise(resolve => resolve(forbidden(new AcessDeniedError())))
+        return forbidden(new AcessDeniedError())
     }
 }
