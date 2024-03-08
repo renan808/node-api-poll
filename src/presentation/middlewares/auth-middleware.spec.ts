@@ -9,6 +9,12 @@ interface SutTypes {
     sut: AuthMiddleware
     loadAccountByTokenStub: LoadAccountByToken
 }
+const makeFakeAccount = (): AccountModel => ({
+    id: 'any_id',
+    email: 'any_email@email.com',
+    name: 'any_name',
+    password: 'any_password'
+})
 
 const makeFakeRequest = (): httpRequest => ({
     headers: {
@@ -19,7 +25,7 @@ const makeFakeRequest = (): httpRequest => ({
 const makeLoadAccountByTokenStub = (): LoadAccountByToken => {
     class LoadAccountByTokenStub implements LoadAccountByToken {
         async load (acessToken: string, role?: string): Promise<AccountModel | null> {
-            return await new Promise(resolve => resolve(null))
+            return await new Promise(resolve => resolve(makeFakeAccount()))
         }
     }
     return new LoadAccountByTokenStub()
@@ -46,5 +52,14 @@ describe('Auth Middleware', () => {
         const loadbyTokenSpy = jest.spyOn(loadAccountByTokenStub, 'load')
         await sut.handle(makeFakeRequest())
         expect(loadbyTokenSpy).toHaveBeenCalledWith('any_token')
+    })
+
+    test('Should Return 403 if LoadAccountByToken return null', async () => {
+        const { sut, loadAccountByTokenStub } = makeSut()
+        jest.spyOn(loadAccountByTokenStub, 'load').mockReturnValueOnce(
+            new Promise(resolve => resolve(null))
+        )
+        const httpResponse = await sut.handle(makeFakeRequest())
+        expect(httpResponse).toEqual(forbidden(new AcessDeniedError()))
     })
 })
