@@ -2,7 +2,7 @@ import type { AddAccountRepository } from '../../../../data/protocols/db/account
 import type { AddAccountModel } from '../../../../domain/use-cases/add-account'
 import type { AccountModel } from '../../../../domain/models/account'
 import { Mongohelper } from '../helpers/mongo-helper'
-import type { LoadAccountByEmailRepository } from '../../../../data/protocols/db/account/LoadAccountByEmailRepository'
+import type { LoadAccountByEmailRepository } from '../../../../data/protocols/db/account/load-account-by-email-repository'
 import type { UpdateAcessTokenRepository } from '../../../../data/protocols/db/account/updateAcessTokenRepository'
 export class AccountMongoRepository implements AddAccountRepository, LoadAccountByEmailRepository, UpdateAcessTokenRepository {
     async add (accountData: AddAccountModel): Promise<AccountModel> {

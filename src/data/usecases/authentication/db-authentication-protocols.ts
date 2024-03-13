@@ -1,5 +1,5 @@
 export * from '../add-account/db-add-account-protocols'
-export * from '../../protocols/db/account/LoadAccountByEmailRepository'
+export * from '../../protocols/db/account/load-account-by-email-repository'
 export * from '../../../domain/use-cases/authentication'
 export * from '../../protocols/criptography/hash-comparer'
 export * from '../../protocols/criptography/encrypter'
