@@ -20,56 +20,60 @@ const makeSut = (): BcryptAdapter => {
 }
 
 describe('Bcrypt Adapter', () => {
-    test('Should call hash with correct values', async () => {
-        const sut = makeSut()
-        const hashSpy = jest.spyOn(bcrypt, 'hash')
-        await sut.hash('any_value')
-        expect(hashSpy).toHaveBeenCalledWith('any_value', salt)
-    })
-
-    test('Should return a valid hash on hash success', async () => {
-        const sut = makeSut()
-        const hash = await sut.hash('any_value')
-        expect(hash).toBe('hash')
-    })
-
-    test('Should throw if hash throws', async () => {
-        jest.spyOn(bcrypt, 'hash').mockImplementationOnce(() => {
-            throw new Error()
+    describe('hash()', () => {
+        test('Should call hash with correct values', async () => {
+            const sut = makeSut()
+            const hashSpy = jest.spyOn(bcrypt, 'hash')
+            await sut.hash('any_value')
+            expect(hashSpy).toHaveBeenCalledWith('any_value', salt)
         })
-        const sut = makeSut()
-        const promise = sut.hash('any_value')
-        await expect(promise).rejects.toThrow()
-    })
 
-    test('Should call compare with correct values', async () => {
-        const sut = makeSut()
-        const compareSpy = jest.spyOn(bcrypt, 'compare')
-        await sut.compare('any_password', 'hashed_password')
-        expect(compareSpy).toHaveBeenCalledWith('any_password', 'hashed_password')
-    })
-
-    test('Should return true when compare succeeds', async () => {
-        const sut = makeSut()
-        const isValid = await sut.compare('any_password', 'hashed_password')
-        expect(isValid).toBe(true)
-    })
-
-    test('Should return false when compare fails', async () => {
-        const sut = makeSut()
-        jest.spyOn(bcrypt, 'compare').mockImplementationOnce(() => {
-            return false
+        test('Should return a valid hash on hash success', async () => {
+            const sut = makeSut()
+            const hash = await sut.hash('any_value')
+            expect(hash).toBe('hash')
         })
-        const isValid = await sut.compare('invalid_password', 'hashed_password')
-        expect(isValid).toBe(false)
+
+        test('Should throw if hash throws', async () => {
+            jest.spyOn(bcrypt, 'hash').mockImplementationOnce(() => {
+                throw new Error()
+            })
+            const sut = makeSut()
+            const promise = sut.hash('any_value')
+            await expect(promise).rejects.toThrow()
+        })
     })
 
-    test('Should throw if compare throws', async () => {
-        jest.spyOn(bcrypt, 'compare').mockImplementationOnce(() => {
-            throw new Error()
+    describe('compare()', () => {
+        test('Should call compare with correct values', async () => {
+            const sut = makeSut()
+            const compareSpy = jest.spyOn(bcrypt, 'compare')
+            await sut.compare('any_password', 'hashed_password')
+            expect(compareSpy).toHaveBeenCalledWith('any_password', 'hashed_password')
         })
-        const sut = makeSut()
-        const promise = sut.compare('any_password', 'hashed_password')
-        await expect(promise).rejects.toThrow()
+
+        test('Should return true when compare succeeds', async () => {
+            const sut = makeSut()
+            const isValid = await sut.compare('any_password', 'hashed_password')
+            expect(isValid).toBe(true)
+        })
+
+        test('Should return false when compare fails', async () => {
+            const sut = makeSut()
+            jest.spyOn(bcrypt, 'compare').mockImplementationOnce(() => {
+                return false
+            })
+            const isValid = await sut.compare('invalid_password', 'hashed_password')
+            expect(isValid).toBe(false)
+        })
+
+        test('Should throw if compare throws', async () => {
+            jest.spyOn(bcrypt, 'compare').mockImplementationOnce(() => {
+                throw new Error()
+            })
+            const sut = makeSut()
+            const promise = sut.compare('any_password', 'hashed_password')
+            await expect(promise).rejects.toThrow()
+        })
     })
 })
