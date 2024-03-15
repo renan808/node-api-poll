@@ -17,7 +17,7 @@ describe('Survey routes', () => {
         await SurveyCollection.deleteMany({})
     })
     describe('POST /add-surveys', () => {
-        test('Should return 200', async () => {
+        test('Should return 403 if add survey was called without acessToken', async () => {
             await request(app)
             .post('/api/add-surveys')
             .send({
@@ -30,7 +30,7 @@ describe('Survey routes', () => {
                     image: 'image2'
                 }]
             })
-            .expect(200)
+            .expect(403)
         })
     })
 })
