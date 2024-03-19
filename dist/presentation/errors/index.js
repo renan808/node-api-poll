@@ -17,4 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./invalid-param-error"), exports);
 __exportStar(require("./missing-param-error"), exports);
 __exportStar(require("./server-error"), exports);
+__exportStar(require("./acess-denied-error"), exports);
 //# sourceMappingURL=index.js.map

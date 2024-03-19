@@ -33,6 +33,13 @@ class AccountMongoRepository {
             yield accountCollection.updateOne({ _id: id }, { $set: { acessToken: token } });
         });
     }
+    loadByToken(acessToken, role) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const accountCollection = yield mongo_helper_1.Mongohelper.getCollection('accounts');
+            const account = yield accountCollection.findOne({ acessToken, role });
+            return mongo_helper_1.Mongohelper.map(account);
+        });
+    }
 }
 exports.AccountMongoRepository = AccountMongoRepository;
 //# sourceMappingURL=account-mongo-repository.js.map

@@ -8,28 +8,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.JwtAdapter = void 0;
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-class JwtAdapter {
-    constructor(Secret) {
-        this.Secret = Secret;
+exports.DbLoadAccountByToken = void 0;
+class DbLoadAccountByToken {
+    constructor(loadAccountByTokenRepository, decrypter) {
+        this.loadAccountByTokenRepository = loadAccountByTokenRepository;
+        this.decrypter = decrypter;
     }
-    encrypt(value) {
+    load(acessToken, role) {
         return __awaiter(this, void 0, void 0, function* () {
-            const acessToken = jsonwebtoken_1.default.sign({ id: value }, this.Secret);
-            return acessToken;
-        });
-    }
-    decrypt(data) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const value = jsonwebtoken_1.default.verify(data, this.Secret);
-            return yield new Promise(resolve => resolve(value));
+            const token = yield this.decrypter.decrypt(acessToken);
+            if (token) {
+                const account = yield this.loadAccountByTokenRepository.loadByToken(acessToken, role);
+                if (account) {
+                    return account;
+                }
+            }
+            return null;
         });
     }
 }
-exports.JwtAdapter = JwtAdapter;
-//# sourceMappingURL=jwt-adapter.js.map
+exports.DbLoadAccountByToken = DbLoadAccountByToken;
+//# sourceMappingURL=db-load-account-by-token.js.map

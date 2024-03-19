@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.unauthorized = exports.ok = exports.serverError = exports.badRequest = void 0;
+exports.forbidden = exports.unauthorized = exports.ok = exports.serverError = exports.badRequest = void 0;
 const server_error_1 = require("../../errors/server-error");
 const unauthorized_error_1 = require("../../errors/unauthorized-error");
 const badRequest = (error) => ({
@@ -26,4 +26,9 @@ const unauthorized = () => ({
     body: new unauthorized_error_1.UnauthorizedError()
 });
 exports.unauthorized = unauthorized;
+const forbidden = (error) => ({
+    statuscode: 403,
+    body: error
+});
+exports.forbidden = forbidden;
 //# sourceMappingURL=http-helper.js.map
