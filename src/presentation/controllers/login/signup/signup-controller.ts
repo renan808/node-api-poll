@@ -1,6 +1,7 @@
 import type { httpResponse, httpRequest, Controller, AddAccount, Validation } from './signup-controler-protocols'
 import { badRequest, serverError, ok } from '../../../helpers/http/http-helper'
 import type { Authentication } from '../login/login-controler-protocols'
+import { InvalidParamError } from '../../../errors'
 export class SignUpController implements Controller {
     constructor (
         private readonly Validation: Validation,
@@ -26,8 +27,9 @@ export class SignUpController implements Controller {
             return ok(token)
         } catch (error) {
             if (error.message === 'email already exists.') {
-                return badRequest(error)
+                return badRequest(new InvalidParamError('email already exists'))
             }
+            console.log(error)
             return serverError(error)
         }
     }

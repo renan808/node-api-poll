@@ -1,4 +1,4 @@
-import express from 'express'
+import express = require('express')
 import setupMiddlewares from './middlewares'
 import setupRoutes from './routes'
 

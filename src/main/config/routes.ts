@@ -1,6 +1,6 @@
 import { Router, type Express } from 'express'
 import { readdirSync } from 'fs'
-import path from 'path'
+import path = require('path')
 export default (app: Express): void => {
     const router = Router()
     app.use('/api', router)

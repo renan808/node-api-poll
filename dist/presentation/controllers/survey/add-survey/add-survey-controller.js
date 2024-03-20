@@ -21,9 +21,15 @@ class AddSurveyController {
             try {
                 const error = this.validation.validate(httpRequest.body);
                 if (error) {
+                    console.log(error);
                     return (0, http_helper_1.badRequest)(error);
                 }
-                this.addSurvey.add(httpRequest.body);
+                const { question, answers } = httpRequest.body;
+                this.addSurvey.add({
+                    question,
+                    answers,
+                    date: new Date()
+                });
                 return (0, http_helper_1.ok)(httpRequest.body);
             }
             catch (error) {

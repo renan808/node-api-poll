@@ -31,19 +31,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const fs_1 = require("fs");
-const path_1 = __importDefault(require("path"));
+const path = require("path");
 exports.default = (app) => {
     const router = (0, express_1.Router)();
     app.use('/api', router);
-    void (0, fs_1.readdirSync)(path_1.default.join(__dirname, '/../routes')).map((file) => __awaiter(void 0, void 0, void 0, function* () {
+    void (0, fs_1.readdirSync)(path.join(__dirname, '/../routes')).map((file) => __awaiter(void 0, void 0, void 0, function* () {
         if (!file.includes('.test.') && !file.includes('.map')) {
-            (yield Promise.resolve(`${path_1.default.join(__dirname, '/../routes/', file)}`).then(s => __importStar(require(s)))).default(router);
+            (yield Promise.resolve(`${path.join(__dirname, '/../routes/', file)}`).then(s => __importStar(require(s)))).default(router);
         }
     }));
 };

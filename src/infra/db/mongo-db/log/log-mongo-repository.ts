@@ -7,7 +7,6 @@ export class LogMongoRepository implements LogErrorRepository {
         await errorCollection.insertOne({
             stack,
             date: new Date()
-
         })
     }
 }

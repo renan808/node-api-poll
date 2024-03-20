@@ -8,9 +8,15 @@ export class AddSurveyController implements Controller {
         try {
             const error = this.validation.validate(httpRequest.body)
             if (error) {
+                console.log(error)
                 return badRequest(error)
             }
-            this.addSurvey.add(httpRequest.body)
+            const { question, answers } = httpRequest.body
+            this.addSurvey.add({
+                question,
+                answers,
+                date: new Date()
+            })
             return ok(httpRequest.body)
         } catch (error) {
             return serverError(error)

@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SignUpController = void 0;
 const http_helper_1 = require("../../../helpers/http/http-helper");
+const errors_1 = require("../../../errors");
 class SignUpController {
     constructor(Validation, AddAccount, Authentication) {
         this.Validation = Validation;
@@ -36,8 +37,9 @@ class SignUpController {
             }
             catch (error) {
                 if (error.message === 'email already exists.') {
-                    return (0, http_helper_1.badRequest)(error);
+                    return (0, http_helper_1.badRequest)(new errors_1.InvalidParamError('email already exists'));
                 }
+                console.log(error);
                 return (0, http_helper_1.serverError)(error);
             }
         });
