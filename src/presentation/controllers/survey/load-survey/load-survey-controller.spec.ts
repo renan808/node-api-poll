@@ -29,7 +29,7 @@ const makeFakeSurvey = (): SurveyModel[] => {
 
 const makeLoadSurvey = (): LoadSurveys => {
     class LoadSurveyStub implements LoadSurveys {
-        async load (): Promise<SurveyModel[]> {
+        async loadAll (): Promise<SurveyModel[]> {
             return await new Promise((resolve, reject) => {
                 resolve(makeFakeSurvey())
             })
@@ -50,14 +50,14 @@ const makeSut = (): SutTypes => {
 describe('LoadSurveyController', () => {
     test('Should call LoadSurvey', async () => {
         const { sut, loadSurveysStub } = makeSut()
-        const spyLoadSurvey = jest.spyOn(loadSurveysStub, 'load')
+        const spyLoadSurvey = jest.spyOn(loadSurveysStub, 'loadAll')
         await sut.handle({})
         expect(spyLoadSurvey).toHaveBeenCalled()
     })
 
     test('Should return 500 if LoadSurvey throws', async () => {
         const { sut, loadSurveysStub } = makeSut()
-        jest.spyOn(loadSurveysStub, 'load').mockReturnValueOnce(
+        jest.spyOn(loadSurveysStub, 'loadAll').mockReturnValueOnce(
             new Promise((resolve, reject) => reject(new Error()))
         )
         const httpResponse = await sut.handle({})
@@ -65,7 +65,7 @@ describe('LoadSurveyController', () => {
     })
     test('Should return 204 if LoadSurvey returns empty', async () => {
         const { sut, loadSurveysStub } = makeSut()
-        jest.spyOn(loadSurveysStub, 'load').mockReturnValueOnce(new Promise(resolve => resolve([])))
+        jest.spyOn(loadSurveysStub, 'loadAll').mockReturnValueOnce(new Promise(resolve => resolve([])))
         const httpResponse = await sut.handle({})
         expect(httpResponse).toEqual(noContent())
     })

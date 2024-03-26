@@ -7,5 +7,5 @@ export interface SurveyModel {
 }
 
 export interface LoadSurveys {
-    load (): Promise<SurveyModel[]>
+    loadAll (): Promise<SurveyModel[]>
 }
