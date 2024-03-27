@@ -1,6 +1,6 @@
-import { type LoadSurveys, type Controller, type httpRequest, type httpResponse, ok, serverError, noContent } from './load-survey-protocols'
+import { type LoadSurveys, type Controller, type httpRequest, type httpResponse, ok, serverError, noContent } from './load-surveys-protocols'
 
-export class LoadSurveyController implements Controller {
+export class LoadSurveysController implements Controller {
     constructor (private readonly loadSurvey: LoadSurveys) {}
 
     async handle (httpRequest: httpRequest): Promise<httpResponse> {

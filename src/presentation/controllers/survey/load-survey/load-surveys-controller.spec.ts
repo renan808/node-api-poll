@@ -1,4 +1,4 @@
-import { type Controller, type LoadSurveys, type SurveyModel, LoadSurveyController, ok, serverError, noContent } from './load-survey-protocols'
+import { type Controller, type LoadSurveys, type SurveyModel, LoadSurveysController, ok, serverError, noContent } from './load-surveys-protocols'
 import MockDate from 'mockdate'
 
 interface SutTypes {
@@ -40,7 +40,7 @@ const makeLoadSurvey = (): LoadSurveys => {
 
 const makeSut = (): SutTypes => {
     const loadSurveysStub = makeLoadSurvey()
-    const sut = new LoadSurveyController(loadSurveysStub)
+    const sut = new LoadSurveysController(loadSurveysStub)
     return {
         sut,
         loadSurveysStub
