@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.forbidden = exports.unauthorized = exports.ok = exports.serverError = exports.badRequest = void 0;
+exports.forbidden = exports.unauthorized = exports.noContent = exports.ok = exports.serverError = exports.badRequest = void 0;
 const server_error_1 = require("../../errors/server-error");
 const unauthorized_error_1 = require("../../errors/unauthorized-error");
 const badRequest = (error) => ({
@@ -21,6 +21,11 @@ const ok = (data) => ({
     body: data
 });
 exports.ok = ok;
+const noContent = () => ({
+    statuscode: 204,
+    body: null
+});
+exports.noContent = noContent;
 const unauthorized = () => ({
     statuscode: 401,
     body: new unauthorized_error_1.UnauthorizedError()
