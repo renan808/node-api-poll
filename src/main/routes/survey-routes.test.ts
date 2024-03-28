@@ -16,10 +16,26 @@ describe('Survey routes', () => {
         SurveyCollection = await Mongohelper.getCollection('surveys')
         await SurveyCollection.deleteMany({})
     })
-    describe('POST /add-surveys', () => {
-        test('Should return 403 if add survey was called without acessToken', async () => {
+    describe('POST /surveys', () => {
+        test('Should return 403 if AddSurveys was called without acessToken', async () => {
             await request(app)
-            .post('/api/add-surveys')
+            .post('/api/surveys')
+            .send({
+                question: 'some_question',
+                answers: [{
+                    answer1: 'response1',
+                    image1: 'image1'
+                }, {
+                    answer2: 'response2',
+                    image: 'image2'
+                }]
+            })
+            .expect(403)
+        })
+
+        test('Should return 403 if LoadSurveys was called without acessToken', async () => {
+            await request(app)
+            .get('/api/surveys')
             .send({
                 question: 'some_question',
                 answers: [{
