@@ -26,7 +26,11 @@ export class AccountMongoRepository implements AddAccountRepository, LoadAccount
 
     async loadByToken (acessToken: string, role?: string | undefined): Promise<AccountModel> {
         const accountCollection = await Mongohelper.getCollection('accounts')
-        const account = await accountCollection.findOne({ acessToken, role })
+        let account = await accountCollection.findOne({ acessToken })
+        if (account && account.role === 'admin') {
+            return Mongohelper.map(account)
+        }
+        account = await accountCollection.findOne({ acessToken, role })
         return Mongohelper.map(account)
     }
 }

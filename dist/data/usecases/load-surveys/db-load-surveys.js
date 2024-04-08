@@ -9,22 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SurveyMongoRepository = void 0;
-const mongo_helper_1 = require("../helpers/mongo-helper");
-class SurveyMongoRepository {
-    add(surveyData) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
-            yield surveyCollection.insertOne(surveyData);
-        });
+exports.DbLoadSurveys = void 0;
+class DbLoadSurveys {
+    constructor(loadSurveysRepository) {
+        this.loadSurveysRepository = loadSurveysRepository;
     }
     loadAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
-            const surveys = yield surveyCollection.find().toArray();
-            return surveys;
+            const survey = yield this.loadSurveysRepository.loadAll();
+            return survey;
         });
     }
 }
-exports.SurveyMongoRepository = SurveyMongoRepository;
-//# sourceMappingURL=survey-mongo-repository.js.map
+exports.DbLoadSurveys = DbLoadSurveys;
+//# sourceMappingURL=db-load-surveys.js.map

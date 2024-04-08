@@ -3,6 +3,7 @@ import type { AddAccount, AddAccountModel, AccountModel, httpRequest, Validation
 import { ServerError, MissingParamError } from '../../../errors'
 import { serverError, ok, badRequest } from '../../../helpers/http/http-helper'
 import type { Authentication, AuthenticationModel } from '../login/login-controler-protocols'
+
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {
     async add (account: AddAccountModel): Promise<AccountModel> {
@@ -79,7 +80,7 @@ describe('SignUp Controller', () => {
   test('Should Return 200 if a valid data is provided', async () => {
     const { sut } = makeSut()
     const httpResponse = await sut.handle(makeFakeRequest())
-    expect(httpResponse).toEqual(ok('any_token'))
+    expect(httpResponse).toEqual(ok({ token: 'any_token' }))
   })
 
   test('Should call Validation with correct value', async () => {

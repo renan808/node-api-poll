@@ -9,22 +9,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SurveyMongoRepository = void 0;
-const mongo_helper_1 = require("../helpers/mongo-helper");
-class SurveyMongoRepository {
-    add(surveyData) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
-            yield surveyCollection.insertOne(surveyData);
-        });
+exports.LoadSurveysController = void 0;
+const load_surveys_protocols_1 = require("./load-surveys-protocols");
+class LoadSurveysController {
+    constructor(loadSurvey) {
+        this.loadSurvey = loadSurvey;
     }
-    loadAll() {
+    handle(httpRequest) {
         return __awaiter(this, void 0, void 0, function* () {
-            const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
-            const surveys = yield surveyCollection.find().toArray();
-            return surveys;
+            try {
+                const surveys = yield this.loadSurvey.loadAll();
+                return surveys.length ? (0, load_surveys_protocols_1.ok)(surveys) : (0, load_surveys_protocols_1.noContent)();
+            }
+            catch (error) {
+                console.log(error);
+                return (0, load_surveys_protocols_1.serverError)(error);
+            }
         });
     }
 }
-exports.SurveyMongoRepository = SurveyMongoRepository;
-//# sourceMappingURL=survey-mongo-repository.js.map
+exports.LoadSurveysController = LoadSurveysController;
+//# sourceMappingURL=load-surveys-controller.js.map

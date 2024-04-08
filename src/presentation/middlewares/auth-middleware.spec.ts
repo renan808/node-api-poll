@@ -64,7 +64,7 @@ describe('Auth Middleware', () => {
         expect(loadbyTokenSpy).toHaveBeenCalledWith('any_token', role)
     })
 
-    test('Should return 503 if LoadAccountByToken throw', async () => {
+    test('Should return 500 if LoadAccountByToken throw', async () => {
         const { sut, loadAccountByTokenStub } = makeSut()
         jest.spyOn(loadAccountByTokenStub, 'load').mockReturnValueOnce(
             new Promise((resolve, reject) => reject(new Error()
@@ -74,10 +74,7 @@ describe('Auth Middleware', () => {
     })
 
     test('Should Return 200 and accountId on success', async () => {
-        const { sut, loadAccountByTokenStub } = makeSut()
-        jest.spyOn(loadAccountByTokenStub, 'load').mockReturnValueOnce(
-            new Promise(resolve => resolve(makeFakeAccount()))
-        )
+        const { sut } = makeSut()
         const httpResponse = await sut.handle(makeFakeRequest())
         expect(httpResponse).toEqual(ok({ accountId: 'any_id' }))
     })
