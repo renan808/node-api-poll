@@ -1,6 +1,6 @@
 import type { Controller, httpRequest, Validation, AddSurveyModel, AddSurvey } from './add-survey-protocols'
 import { AddSurveyController } from "./add-survey-controller"
-import { badRequest, ok } from '../../../helpers/http/http-helper'
+import { badRequest, ok } from '@/presentation/helpers/http/http-helper'
 import Mockdate from 'mockdate'
 
 interface SutTypes {

@@ -35,7 +35,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongo_helper_1 = require("../infra/db/mongo-db/helpers/mongo-helper");
+require("module-alias/register");
+const mongo_helper_1 = require("@/infra/db/mongo-db/helpers/mongo-helper");
 const env_1 = __importDefault(require("./config/env"));
 mongo_helper_1.Mongohelper.connect(env_1.default.mongoUrl).then(() => __awaiter(void 0, void 0, void 0, function* () {
     const app = (yield (Promise.resolve().then(() => __importStar(require('./config/app'))))).default;

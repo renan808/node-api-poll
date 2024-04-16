@@ -15,7 +15,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("../../../protocols"), exports);
-__exportStar(require("../../../../domain/use-cases/load-surveys"), exports);
+__exportStar(require("@/domain/use-cases/load-surveys"), exports);
 __exportStar(require("../../../helpers/http/http-helper"), exports);
 __exportStar(require("./load-surveys-controller"), exports);
 //# sourceMappingURL=load-surveys-protocols.js.map

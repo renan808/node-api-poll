@@ -15,6 +15,6 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("../protocols"), exports);
-__exportStar(require("../../domain/use-cases/load-account-by-token"), exports);
-__exportStar(require("../../domain/models/account"), exports);
+__exportStar(require("@/domain/use-cases/load-account-by-token"), exports);
+__exportStar(require("@/domain/models/account"), exports);
 //# sourceMappingURL=auth-middleware-protocols.js.map

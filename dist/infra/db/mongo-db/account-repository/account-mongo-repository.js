@@ -36,7 +36,11 @@ class AccountMongoRepository {
     loadByToken(acessToken, role) {
         return __awaiter(this, void 0, void 0, function* () {
             const accountCollection = yield mongo_helper_1.Mongohelper.getCollection('accounts');
-            const account = yield accountCollection.findOne({ acessToken, role });
+            let account = yield accountCollection.findOne({ acessToken });
+            if (account && account.role === 'admin') {
+                return mongo_helper_1.Mongohelper.map(account);
+            }
+            account = yield accountCollection.findOne({ acessToken, role });
             return mongo_helper_1.Mongohelper.map(account);
         });
     }

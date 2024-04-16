@@ -5,7 +5,9 @@ const server_error_1 = require("../../errors/server-error");
 const unauthorized_error_1 = require("../../errors/unauthorized-error");
 const badRequest = (error) => ({
     statuscode: 400,
-    body: error
+    body: {
+        error: error.message
+    }
 });
 exports.badRequest = badRequest;
 const serverError = (error) => {
@@ -28,7 +30,9 @@ const noContent = () => ({
 exports.noContent = noContent;
 const unauthorized = () => ({
     statuscode: 401,
-    body: new unauthorized_error_1.UnauthorizedError()
+    body: {
+        error: new unauthorized_error_1.UnauthorizedError().message
+    }
 });
 exports.unauthorized = unauthorized;
 const forbidden = (error) => ({

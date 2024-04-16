@@ -3,16 +3,16 @@
         "strictNullChecks": true,
         "outDir": "./dist",
         "rootDir": "./src",
+        "baseUrl": "src",
         "module": "CommonJS",
         "target": "ES6",
         "esModuleInterop": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "paths": {
+            "@/*": ["*"]
+        }
     },
     "include": [
         "src"
-    ],
-    "exclude": [
-        "**/*.spec.ts",
-        "**/*.test.ts",
     ]
 }
