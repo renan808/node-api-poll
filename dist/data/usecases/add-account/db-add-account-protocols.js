@@ -14,10 +14,10 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-__exportStar(require("../../../domain/models/account"), exports);
-__exportStar(require("../../../domain/use-cases/add-account"), exports);
+__exportStar(require("@/domain/models/account"), exports);
+__exportStar(require("@/domain/use-cases/add-account"), exports);
 __exportStar(require("../../protocols/criptography/hasher"), exports);
 __exportStar(require("../../protocols/db/account/add-account-repository"), exports);
 __exportStar(require("../../protocols/db/account/load-account-by-email-repository"), exports);
-__exportStar(require("../../../domain/use-cases/authentication"), exports);
+__exportStar(require("@/domain/use-cases/authentication"), exports);
 //# sourceMappingURL=db-add-account-protocols.js.map

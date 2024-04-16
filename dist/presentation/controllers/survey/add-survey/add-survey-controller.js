@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddSurveyController = void 0;
-const http_helper_1 = require("../../../helpers/http/http-helper");
+const http_helper_1 = require("@/presentation/helpers/http/http-helper");
 class AddSurveyController {
     constructor(validation, addSurvey) {
         this.validation = validation;
