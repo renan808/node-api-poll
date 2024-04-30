@@ -11,6 +11,7 @@
         "@typescript-eslit/no-useless-return": "off",
         "@typescript-eslint/no-confusing-void-expression": "off",
         "@typescript-eslint/no-misused-promises": "off",
-        "@typescript-eslint/quotes": "off"
+        "@typescript-eslint/quotes": "off",
+        "@typescript-eslit/import-first": "off"
     }
 }

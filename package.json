@@ -61,7 +61,5 @@
   "engines": {
     "node": "18.x"
   },
-  "_moduleAliases": {
-    "@": "dist"
-  }
+  "description": ""
 }

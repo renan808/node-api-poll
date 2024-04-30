@@ -2,8 +2,8 @@
     "compilerOptions": {
         "strictNullChecks": true,
         "outDir": "./dist",
-        "rootDir": "./src",
-        "baseUrl": "src",
+        "rootDir": "src",
+        "baseUrl": "./src",
         "module": "CommonJS",
         "target": "ES6",
         "esModuleInterop": true,
