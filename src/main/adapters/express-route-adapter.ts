@@ -6,11 +6,11 @@ export const adaptRoute = (controller: Controller) => {
             body: req.body
         }
         const httpResponse = await controller.handle(httpRequest)
-        if (httpResponse.statuscode >= 200) {
+        if (httpResponse.statuscode >= 200 && httpResponse.statuscode <= 299) {
             res.status(httpResponse.statuscode).json(httpResponse.body)
         } else {
             res.status(httpResponse.statuscode).json({
-                error: httpResponse.body.message
+                error: httpResponse.body
             })
         }
     }
