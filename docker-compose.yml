@@ -14,6 +14,8 @@ services:
     working_dir: /usr/src/node-api-survey
     restart: always
     command: bash -c "npm install --only=prod && npm run debug"
+    "environment":
+      - MONGO_URL=mongodb://mongo:27017/node-api-survey"
     volumes:
       - ./dist/:/usr/src/node-api-survey/dist/
       - ./package.json:/usr/src/node-api-survey/package.json
