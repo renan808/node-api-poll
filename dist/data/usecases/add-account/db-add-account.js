@@ -21,11 +21,10 @@ class DbAddAccount {
             const account = yield this.LoadAccountByEmailRepository.loadByEmail(accountData.email);
             if (account) {
                 // eslint-disable-next-line prefer-promise-reject-errors
-                return yield new Promise((resolve, reject) => reject(new Error('email already exists.')));
+                return yield new Promise((resolve, reject) => reject(new Error('Email already exists.')));
             }
             const hashedPass = yield this.hasher.hash(accountData.password);
             const newAccount = yield this.addAccountRepository.add(Object.assign({}, accountData, { password: hashedPass }));
-            console.log(newAccount);
             return newAccount;
         });
     }

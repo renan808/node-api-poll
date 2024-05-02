@@ -16,18 +16,18 @@ export class SignUpController implements Controller {
                 return badRequest(error)
             }
             const { name, password, email } = httpRequest.body
-            const response = this.AddAccount.add({
+            await this.AddAccount.add({
                 name,
                 email,
                 password
-            }).then(async () => {
-                const token = await this.Authentication.auth({ email, password })
-                return ok({ token })
-            }).catch(() => {
-                return badRequest(new Error('Email already exists'))
             })
-            return await response
+            const token = await this.Authentication.auth({ email, password })
+            return ok({ token })
         } catch (error) {
+            console.log(error)
+            if (error.message === 'Email already exists.') {
+                return badRequest(error.message)
+            }
             console.log(error)
             return serverError(error)
         }

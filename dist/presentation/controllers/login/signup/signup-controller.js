@@ -30,14 +30,15 @@ class SignUpController {
                     email,
                     password
                 });
-                const account = { email, password };
-                const token = yield this.Authentication.auth(account);
+                const token = yield this.Authentication.auth({ email, password });
                 return (0, http_helper_1.ok)({ token });
             }
             catch (error) {
-                if (error.message === 'email already exists.') {
-                    return (0, http_helper_1.badRequest)(error);
+                console.log(error);
+                if (error.message === 'Email already exists.') {
+                    return (0, http_helper_1.badRequest)(error.message);
                 }
+                console.log(error);
                 return (0, http_helper_1.serverError)(error);
             }
         });

@@ -8,7 +8,7 @@ export const badRequest = (error: Error): httpResponse => ({
 
 export const serverError = (error: Error): httpResponse => ({
   statuscode: 500,
-  body: new ServerError(error.message ?? error.stack)
+  body: new ServerError(error.stack ?? error.message)
 })
 
 export const ok = (data: any): httpResponse => ({
@@ -22,10 +22,7 @@ export const noContent = (): httpResponse => ({
 
 export const unauthorized = (): httpResponse => ({
   statuscode: 401,
-  body: {
-    error: new UnauthorizedError()
-
-  }
+  body: new UnauthorizedError()
 })
 
 export const forbidden = (error: Error): httpResponse => ({

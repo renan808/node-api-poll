@@ -35,9 +35,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/* eslint-disable import/first */
 require("module-alias/register");
-const mongo_helper_1 = require("@/infra/db/mongo-db/helpers/mongo-helper");
+const module_alias_1 = require("module-alias");
+(0, module_alias_1.addAlias)('@', __dirname + '../../');
 const env_1 = __importDefault(require("./config/env"));
+const mongo_helper_1 = require("@/infra/db/mongo-db/helpers/mongo-helper");
 mongo_helper_1.Mongohelper.connect(env_1.default.mongoUrl).then(() => __awaiter(void 0, void 0, void 0, function* () {
     const app = (yield (Promise.resolve().then(() => __importStar(require('./config/app'))))).default;
     app.listen(env_1.default.port, () => {

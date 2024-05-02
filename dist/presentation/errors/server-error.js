@@ -5,7 +5,7 @@ class ServerError extends Error {
     constructor(stack) {
         super('Internal Server Error');
         this.name = 'ServerError';
-        this.stack = stack;
+        this.stack = stack !== null && stack !== void 0 ? stack : this.name;
     }
 }
 exports.ServerError = ServerError;
