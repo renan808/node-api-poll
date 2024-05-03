@@ -1,7 +1,7 @@
 import type { Collection } from 'mongodb'
 import { Mongohelper } from '../helpers/mongo-helper'
 import { SurveyMongoRepository } from './survey-mongo-repository'
-import type { SurveyModel } from '@/domain/use-cases/load-surveys'
+import type { SurveyModel } from '@/domain/models/survey'
 import Mockdate from 'mockdate'
 
 Mockdate.set(new Date())
