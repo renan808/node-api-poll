@@ -9,29 +9,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SurveyMongoRepository = void 0;
+exports.SurveyResultMongoRepository = void 0;
 const mongo_helper_1 = require("../helpers/mongo-helper");
-class SurveyMongoRepository {
-    add(surveyData) {
+class SurveyResultMongoRepository {
+    // terminar a classe e o teste survey-result-mongo-repository e fzr uns protocol pras classes q tão no infra
+    save(data) {
         return __awaiter(this, void 0, void 0, function* () {
             const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
-            yield surveyCollection.insertOne(surveyData);
-        });
-    }
-    loadAll() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
-            const surveys = yield surveyCollection.find().toArray();
-            return surveys;
-        });
-    }
-    loadById(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
-            const survey = yield surveyCollection.findOne({ _id: id });
-            return mongo_helper_1.Mongohelper.map(survey);
+            const newSurvey = yield mongo_helper_1.Mongohelper.map(surveyCollection.findOneAndUpdate({
+                accountId: data.accountId,
+                surveyId: data.surveyId
+            }, {
+                $set: {
+                    answer: data.answer,
+                    date: data.date
+                }
+            }, {
+                upsert: true
+            }));
+            return yield new Promise((resolve, reject) => resolve(newSurvey));
         });
     }
 }
-exports.SurveyMongoRepository = SurveyMongoRepository;
-//# sourceMappingURL=survey-mongo-repository.js.map
+exports.SurveyResultMongoRepository = SurveyResultMongoRepository;
+//# sourceMappingURL=survey-result-mongo-repository.js.map

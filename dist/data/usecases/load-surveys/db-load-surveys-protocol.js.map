@@ -1,1 +1,1 @@
-{"version":3,"file":"db-load-surveys-protocol.js","sourceRoot":"","sources":["../../../../src/data/usecases/load-surveys/db-load-surveys-protocol.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;AAAA,kEAA+C;AAC/C,oFAAiE"}
+{"version":3,"file":"db-load-surveys-protocol.js","sourceRoot":"","sources":["../../../../src/data/usecases/load-surveys/db-load-surveys-protocol.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;AAAA,kEAA+C;AAC/C,oFAAiE;AACjE,yDAAsC"}
