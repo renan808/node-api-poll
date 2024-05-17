@@ -21,12 +21,16 @@ export const Mongohelper = {
         }
         return this.client.db().collection(name)
     },
-     map: (collection: any): any => {
-        if (!collection) {
+     map: (data: any): any => {
+        if (!data) {
             return null
         }
-        const { _id, ...collectionWithoutId } = collection
+        const { _id, ...collectionWithoutId } = data
         const idString = _id.toString()
         return Object.assign({}, collectionWithoutId, { id: idString })
+    },
+
+    mapCollection: (collection: any[]): any[] => {
+        return collection.map(i => Mongohelper.map(i))
     }
 }

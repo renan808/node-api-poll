@@ -1,7 +1,7 @@
 import type { SaveSurveyResultRepository, SaveSurveyResultModel, SurveyResultModel } from "@/data/usecases/save-survey-result/db-save-survey-result-protocol"
 import { Mongohelper } from "../helpers/mongo-helper"
 export class SurveyResultMongoRepository implements SaveSurveyResultRepository {
-    // terminar a classe e o teste survey-result-mongo-repository e fzr uns protocol pras classes q tão no infra
+    // fzr uns protocol pras classes q tão no infra
     async save (data: SaveSurveyResultModel): Promise<SurveyResultModel> {
         const surveyResultsCollection = await Mongohelper.getCollection('surveyResults')
         const newSurvey = await surveyResultsCollection.findOneAndUpdate({

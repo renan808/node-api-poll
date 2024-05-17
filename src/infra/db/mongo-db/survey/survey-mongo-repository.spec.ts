@@ -12,6 +12,7 @@ const makeSut = (): SurveyMongoRepository => {
 
 const makeFakeSurvey = (): SurveyModel[] => {
     return [{
+        id: 'any_id',
         question: 'any_question1',
         answers: [{
             image: 'any_img',
@@ -19,6 +20,7 @@ const makeFakeSurvey = (): SurveyModel[] => {
         }],
         date: new Date()
     }, {
+        id: 'any_id',
         question: 'any_question2',
         answers: [{
             image: 'any_img',
@@ -65,6 +67,7 @@ describe('Survey Mongo Repository', () => {
             await surveyCollection.insertMany(makeFakeSurvey())
             const survey = await sut.loadAll()
             expect(survey.length).toBe(2)
+            expect(survey[0].id).toBeTruthy()
             expect(survey[0].question).toBe('any_question1')
             expect(survey[1].question).toBe('any_question2')
         })
@@ -82,6 +85,7 @@ describe('Survey Mongo Repository', () => {
             })
             const survey = await sut.loadById(res.insertedId)
             expect(survey).toBeTruthy()
+            expect(survey.id).toBeTruthy()
             expect(survey.question).toBe('any_question1')
         })
     })

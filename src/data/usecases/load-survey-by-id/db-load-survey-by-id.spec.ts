@@ -9,6 +9,7 @@ interface SutTypes {
 
 const makeFakeSurvey = (): SurveyModel => {
     return {
+        id: 'any_id',
         question: 'any_question1',
         answers: [{
             image: 'any_img',
@@ -48,7 +49,7 @@ describe('DbLoadSurveyById Usecase', () => {
     test('Should call loadById', async () => {
         const { sut, loadSurveyByIdRepositoryStub } = makeSut()
         const spyLoad = jest.spyOn(loadSurveyByIdRepositoryStub, 'loadById')
-        await sut.loadById('any_token')
+        await sut.loadById('any_id')
         expect(spyLoad).toHaveBeenCalled()
     })
 
@@ -61,7 +62,7 @@ describe('DbLoadSurveyById Usecase', () => {
         await expect(surveysPromise).rejects.toThrow()
     })
 
-    test('Should return a array of surveys on success', async () => {
+    test('Should return a survey on success', async () => {
         const { sut } = makeSut()
         const surveys = await sut.loadById('any_id')
         expect(surveys).toEqual(makeFakeSurvey())

@@ -3,6 +3,7 @@ import { Mongohelper } from '../helpers/mongo-helper'
 import { SurveyResultMongoRepository } from './survey-result-mongo-repository'
 import Mockdate from 'mockdate'
 import type { AccountModel } from '@/domain/models/account'
+import type { SurveyModel } from '@/domain/models/survey'
 Mockdate.set(new Date())
 const makeSut = (): SurveyResultMongoRepository => {
     return new SurveyResultMongoRepository()
@@ -12,7 +13,7 @@ describe('Survey Result Mongo Repository', () => {
     let accountCollection: Collection
     let surveyCollection: Collection
     let surveyResultsCollection: Collection
-    const makeFakeSurvey = async (): Promise<any> => {
+    const makeFakeSurvey = async (): Promise<SurveyModel> => {
         const idSurvey = await surveyCollection.insertOne({
             quesiton: 'any_question',
             answers: [{
@@ -57,7 +58,7 @@ describe('Survey Result Mongo Repository', () => {
             const res = await sut.save({
                 surveyId: survey.id,
                 accountId: account.id,
-                answer: survey.answers[0].answers,
+                answer: survey.answers[0].answer,
                 date: new Date()
             })
             expect(res).toBeTruthy()
