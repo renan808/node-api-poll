@@ -1,4 +1,4 @@
-import type { SaveSurveyResultRepository, SaveSurveyResultModel, SurveyResultModel } from "@/data/usecases/save-survey-result/db-save-survey-result-protocol"
+import type { SaveSurveyResultRepository, SaveSurveyResultModel, SurveyResultModel } from "@/data/usecases/survey-result/save-survey-result/db-save-survey-result-protocol"
 import { Mongohelper } from "../helpers/mongo-helper"
 export class SurveyResultMongoRepository implements SaveSurveyResultRepository {
     // fzr uns protocol pras classes q tão no infra

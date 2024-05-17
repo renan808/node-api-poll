@@ -1,5 +1,5 @@
 export * from '../../../protocols'
-export * from '@/domain/use-cases/load-surveys'
+export * from '@/domain/use-cases/survey/load-surveys'
 export * from '../../../helpers/http/http-helper'
 export * from './load-surveys-controller'
 export * from '@/domain/models/survey'

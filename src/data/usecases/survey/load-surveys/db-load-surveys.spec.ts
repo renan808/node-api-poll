@@ -9,6 +9,7 @@ interface SutTypes {
 
 const makeFakeSurvey = (): SurveyModel[] => {
     return [{
+        id: 'any_id',
         question: 'any_question1',
         answers: [{
             image: 'any_img',
@@ -16,6 +17,7 @@ const makeFakeSurvey = (): SurveyModel[] => {
         }],
         date: new Date()
     }, {
+        id: 'any_id',
         question: 'any_question2',
         answers: [{
             image: 'any_img',
