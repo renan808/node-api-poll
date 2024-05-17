@@ -3,8 +3,8 @@ import { Mongohelper } from "../helpers/mongo-helper"
 export class SurveyResultMongoRepository implements SaveSurveyResultRepository {
     // terminar a classe e o teste survey-result-mongo-repository e fzr uns protocol pras classes q tão no infra
     async save (data: SaveSurveyResultModel): Promise<SurveyResultModel> {
-        const surveyCollection = await Mongohelper.getCollection('surveys')
-        const newSurvey = await surveyCollection.findOneAndUpdate({
+        const surveyResultsCollection = await Mongohelper.getCollection('surveyResults')
+        const newSurvey = await surveyResultsCollection.findOneAndUpdate({
             accountId: data.accountId,
             surveyId: data.surveyId
         }, {
