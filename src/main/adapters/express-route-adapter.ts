@@ -1,9 +1,12 @@
 import type { Controller, httpRequest } from '@/presentation/protocols'
 import type { Request, Response } from 'express'
+
 export const adaptRoute = (controller: Controller) => {
     return async (req: Request, res: Response) => {
         const httpRequest: httpRequest = {
-            body: req.body
+            body: req.body,
+            params: req.params,
+            accountId: req.accountId
         }
         const httpResponse = await controller.handle(httpRequest)
         if (httpResponse.statuscode >= 200 && httpResponse.statuscode <= 299) {

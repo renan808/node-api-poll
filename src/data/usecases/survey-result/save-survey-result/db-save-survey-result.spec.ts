@@ -1,7 +1,7 @@
 import type { SaveSurveyResultRepository, SurveyResultModel, SaveSurveyResultModel } from './db-save-survey-result-protocol'
 import { DbSaveSurveyResult } from './db-save-survey-result'
 import MockDate from 'mockdate'
-// tudo feito, so remodelar esse teste pra testar o SaveSurveyResultRepository
+
 interface SutTypes {
     sut: DbSaveSurveyResult
     saveSurveyResultRepositoryStub: SaveSurveyResultRepository

@@ -19,9 +19,9 @@ const makeFakeRequest = (): httpRequest => ({
         surveyId: 'any_SurveyId'
     },
     body: {
-        answer: 'any_answer',
-        accountId: 'any_accountId'
-    }
+        answer: 'any_answer'
+    },
+    accountId: 'any_accountId'
 })
 
 const makeFakeSurveyResult = (): SurveyResultModel => ({

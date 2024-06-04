@@ -39,7 +39,8 @@ describe('Survey routes', () => {
                 }, {
                     answer2: 'response2',
                     image: 'image2'
-                }]
+                }],
+                date: new Date()
             })
             .expect(403)
         })
@@ -65,7 +66,8 @@ describe('Survey routes', () => {
                 }, {
                     answer2: 'response2',
                     image: 'image2'
-                }]
+                }],
+                date: new Date()
             })
             .expect(200)
         })

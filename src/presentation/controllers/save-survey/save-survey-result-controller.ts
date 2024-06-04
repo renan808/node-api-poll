@@ -2,7 +2,6 @@ import type { Controller, LoadSurveyById, httpResponse, httpRequest, SaveSurveyR
 import { forbidden, ok, serverError } from '@/presentation/helpers/http/http-helper'
 import { InvalidParamError } from '@/presentation/errors'
 
-// terminar os factory e terminar essa classe pra ela usar o saveSurveyResult
 export class SaveSurveyResultController implements Controller {
     constructor (
         private readonly loadSurveyById: LoadSurveyById,
@@ -10,9 +9,9 @@ export class SaveSurveyResultController implements Controller {
 
     async handle (httpRequest: httpRequest): Promise<httpResponse> {
         try {
-            console.log(httpRequest, '<<<')
             const data = await this.loadSurveyById.loadById(httpRequest.params.surveyId)
-            const { accountId, answer } = httpRequest.body
+            const { answer } = httpRequest.body
+            const accountId = httpRequest.accountId
             if (data) {
                 const answers = data.answers.map(a => a.answer)
                 if (!answers.includes(answer)) {
@@ -29,6 +28,7 @@ export class SaveSurveyResultController implements Controller {
             })
             return await new Promise(resolve => resolve(ok(res)))
         } catch (error) {
+            console.log(error)
             return serverError(error)
         }
     }

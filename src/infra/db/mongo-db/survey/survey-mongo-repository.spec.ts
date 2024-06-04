@@ -83,7 +83,7 @@ describe('Survey Mongo Repository', () => {
                 }],
                 date: new Date()
             })
-            const survey = await sut.loadById(res.insertedId)
+            const survey = await sut.loadById(res.insertedId.toString())
             expect(survey).toBeTruthy()
             expect(survey.id).toBeTruthy()
             expect(survey.question).toBe('any_question1')
