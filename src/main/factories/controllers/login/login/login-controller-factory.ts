@@ -3,7 +3,7 @@ import { LoginController } from '@/presentation/controllers/login/login/login-co
 import { LogControllerDecorator } from '@/main/decorators/log-controller-decorator'
 import { LogMongoRepository } from '@/infra/db/mongo-db/log/log-mongo-repository'
 import { makeLoginValidation } from './login-validation-factory'
-import { makeDbAuthentication } from '@/main/factories/use-cases/db-authentication-factory'
+import { makeDbAuthentication } from '@/main/factories/use-cases/account/db-authentication-factory'
 export const makeLoginController = (): Controller => {
     const dbAuthentication = makeDbAuthentication()
     const loginController = new LoginController(dbAuthentication, makeLoginValidation())

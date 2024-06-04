@@ -87,7 +87,7 @@ describe('Survey Result Mongo Repository', () => {
             console.log(survey.answers[0].answer)
             expect(res).toBeTruthy()
             expect(res.id).toBeTruthy()
-            expect(res.id).toBe(surveyResult.id)
+            expect(res.id).toEqual(surveyResult.id)
             expect(res.answer).toBe(survey.answers[1].answer)
         })
     })

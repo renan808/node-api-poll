@@ -6,7 +6,7 @@ import { LogControllerDecorator } from '@/main/decorators/log-controller-decorat
 import type { Controller } from '@/presentation/protocols'
 import { LogMongoRepository } from '@/infra/db/mongo-db/log/log-mongo-repository'
 import { makeSignUpValidation } from './signup-validation-factory'
-import { makeDbAuthentication } from '@/main/factories/use-cases/db-authentication-factory'
+import { makeDbAuthentication } from '@/main/factories/use-cases/account/db-authentication-factory'
 export const makeSignUpController = (): Controller => {
     const salt = 12
     const accountMongoRepository = new AccountMongoRepository()

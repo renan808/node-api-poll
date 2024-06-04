@@ -6,8 +6,6 @@ interface SutTypes {
     loadSurveysStub: LoadSurveys
 }
 
-MockDate.set(new Date())
-
 const makeFakeSurvey = (): SurveyModel[] => {
     return [{
         id: 'any_id',
@@ -50,6 +48,14 @@ const makeSut = (): SutTypes => {
 }
 
 describe('LoadSurveyController', () => {
+    beforeAll(() => {
+        MockDate.set(new Date())
+    })
+
+    afterAll(() => {
+        MockDate.reset()
+    })
+
     test('Should call LoadSurvey', async () => {
         const { sut, loadSurveysStub } = makeSut()
         const spyLoadSurvey = jest.spyOn(loadSurveysStub, 'loadAll')
