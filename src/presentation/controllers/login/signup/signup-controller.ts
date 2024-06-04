@@ -26,7 +26,7 @@ export class SignUpController implements Controller {
         } catch (error) {
             console.log(error)
             if (error.message === 'Email already exists.') {
-                return badRequest(error.message)
+                return badRequest(error)
             }
             console.log(error)
             return serverError(error)
