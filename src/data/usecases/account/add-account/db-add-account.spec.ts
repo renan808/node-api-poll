@@ -1,6 +1,8 @@
 import type { Hasher, AddAccountParams, AccountModel, AddAccountRepository, LoadAccountByEmailRepository } from './db-add-account-protocols'
 import { mockAccountModel, mockAddAccountParams } from '@/domain/tests'
 import { DbAddAccount } from './db-add-account'
+import { throwError } from '@/domain/tests/tests-helpers'
+
 interface sutTypes {
     sut: DbAddAccount
     hasherStub: Hasher
@@ -64,7 +66,7 @@ describe('dbAddAccount Usecase', () => {
 
     test('Should throw if LoadAccountByEmailRepository throws', async () => {
         const { sut, loadAccountByEmailRepositoryStub } = makeSut()
-        jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))
+        jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail').mockImplementationOnce(throwError)
         const promise = sut.add(mockAddAccountParams())
         await expect(promise).rejects.toThrow()
     })
@@ -86,9 +88,7 @@ describe('dbAddAccount Usecase', () => {
 
     test('Should throw if HashComparer Throws', async () => {
         const { sut, hasherStub } = makeSut()
-        jest.spyOn(hasherStub, 'hash').mockReturnValueOnce(
-            new Promise((resolve, reject) => reject(new Error()))
-        )
+        jest.spyOn(hasherStub, 'hash').mockImplementationOnce(throwError)
         const promise = sut.add(mockAddAccountParams())
         await expect(promise).rejects.toThrow()
     })

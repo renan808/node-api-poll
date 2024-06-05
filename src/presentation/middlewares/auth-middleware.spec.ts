@@ -5,6 +5,7 @@ import type { LoadAccountByToken } from '@/domain/use-cases/account/load-account
 import type { AccountModel } from '@/domain/models/account'
 import type { httpRequest } from '../protocols'
 import { mockAccountModel } from '@/domain/tests'
+import { throwError } from '@/domain/tests/tests-helpers'
 
 interface SutTypes {
     sut: AuthMiddleware
@@ -61,9 +62,7 @@ describe('Auth Middleware', () => {
 
     test('Should return 500 if LoadAccountByToken throw', async () => {
         const { sut, loadAccountByTokenStub } = makeSut()
-        jest.spyOn(loadAccountByTokenStub, 'load').mockReturnValueOnce(
-            new Promise((resolve, reject) => reject(new Error()
-        )))
+        jest.spyOn(loadAccountByTokenStub, 'load').mockImplementationOnce(throwError)
         const httpResponse = await sut.handle(makeFakeRequest())
         expect(httpResponse).toEqual(serverError(new Error()))
     })

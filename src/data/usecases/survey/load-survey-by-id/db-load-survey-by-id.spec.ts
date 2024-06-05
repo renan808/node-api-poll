@@ -2,6 +2,8 @@ import type { LoadSurveyByIdRepository, SurveyModel } from "./db-load-survey-by-
 import { DbLoadSurveyById } from './db-load-survey-by-id'
 import MockDate from 'mockdate'
 import { mockSurveyModel } from "@/domain/tests"
+import { throwError } from "@/domain/tests/tests-helpers"
+
 interface SutTypes {
     sut: DbLoadSurveyById
     loadSurveyByIdRepositoryStub: LoadSurveyByIdRepository
@@ -43,9 +45,7 @@ describe('DbLoadSurveyById Usecase', () => {
 
     test('Should throw if LoadSurveyByIdRepositoryStub throws', async () => {
         const { sut, loadSurveyByIdRepositoryStub } = makeSut()
-        jest.spyOn(loadSurveyByIdRepositoryStub, 'loadById').mockReturnValueOnce(
-            new Promise((resolve, reject) => reject(new Error()))
-        )
+        jest.spyOn(loadSurveyByIdRepositoryStub, 'loadById').mockImplementationOnce(throwError)
         const surveysPromise = sut.loadById('any_id')
         await expect(surveysPromise).rejects.toThrow()
     })

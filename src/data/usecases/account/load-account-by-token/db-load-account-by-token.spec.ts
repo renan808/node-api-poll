@@ -3,6 +3,7 @@ import type { Decrypter } from '@/data/protocols/criptography/decrypter'
 import { DbLoadAccountByToken } from './db-load-account-by-token'
 import type { LoadAccountByTokenRepository } from "data/protocols/db/account/load-account-by-token-repository"
 import { mockAccountModel } from "@/domain/tests"
+import { throwError } from "@/domain/tests/tests-helpers"
 
 const makeLoadAccountByTokenRepositoryStub = (): LoadAccountByTokenRepository => {
     class LoadAccountByTokenRepositoryStub implements LoadAccountByTokenRepository {
@@ -66,9 +67,7 @@ describe('Db LoadAccountByToken Usecase', () => {
 
     test('Should throw if Decrypter throws', async () => {
         const { sut, decrypterStub } = makeSut()
-        jest.spyOn(decrypterStub, 'decrypt').mockReturnValueOnce(
-            new Promise((resolve, reject) => reject(new Error()))
-        )
+        jest.spyOn(decrypterStub, 'decrypt').mockImplementationOnce(throwError)
         const promise = sut.load('any_token')
         await expect(promise).rejects.toThrow()
     })
