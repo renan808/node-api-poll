@@ -13,7 +13,9 @@ exports.adaptRoute = void 0;
 const adaptRoute = (controller) => {
     return (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const httpRequest = {
-            body: req.body
+            body: req.body,
+            params: req.params,
+            accountId: req.accountId
         };
         const httpResponse = yield controller.handle(httpRequest);
         if (httpResponse.statuscode >= 200 && httpResponse.statuscode <= 299) {

@@ -36,7 +36,7 @@ class SignUpController {
             catch (error) {
                 console.log(error);
                 if (error.message === 'Email already exists.') {
-                    return (0, http_helper_1.badRequest)(error.message);
+                    return (0, http_helper_1.badRequest)(error);
                 }
                 console.log(error);
                 return (0, http_helper_1.serverError)(error);

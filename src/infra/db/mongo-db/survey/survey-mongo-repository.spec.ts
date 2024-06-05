@@ -10,7 +10,7 @@ const makeSut = (): SurveyMongoRepository => {
     return new SurveyMongoRepository()
 }
 
-const makeFakeSurvey = (): SurveyModel[] => {
+const mockSurveyModel = (): SurveyModel[] => {
     return [{
         id: 'any_id',
         question: 'any_question1',
@@ -64,7 +64,7 @@ describe('Survey Mongo Repository', () => {
     describe('load()', () => {
         test('Should load all Surveys', async () => {
             const sut = makeSut()
-            await surveyCollection.insertMany(makeFakeSurvey())
+            await surveyCollection.insertMany(mockSurveyModel())
             const survey = await sut.loadAll()
             expect(survey.length).toBe(2)
             expect(survey[0].id).toBeTruthy()

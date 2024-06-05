@@ -1,8 +1,8 @@
-import type { AddSurveyRepository, AddSurvey, AddSurveyModel } from "./add-survey-protocols"
+import type { AddSurveyRepository, AddSurvey, AddSurveyParams } from "./add-survey-protocols"
 
 export class DbAddSurvey implements AddSurvey {
     constructor (private readonly addSurveyRepository: AddSurveyRepository) {}
-     async add (data: AddSurveyModel): Promise<void> {
+     async add (data: AddSurveyParams): Promise<void> {
         await this.addSurveyRepository.add(data)
     }
 }

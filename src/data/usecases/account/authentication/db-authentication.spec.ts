@@ -1,20 +1,16 @@
 import type { AccountModel, LoadAccountByEmailRepository, AuthenticationModel, HashComparer, Encrypter, UpdateAcessTokenRepository } from './db-authentication-protocols'
 import { DbAuthentication } from './db-authentication'
+import { mockAccountModel } from '@/domain/tests'
 const makeFakeAuthentication = (): AuthenticationModel => ({
     email: 'any_email@email.com',
     password: 'any_password'
 })
 
-const makeFakeAccount = (): AccountModel => ({
-    id: 'any_id',
-    name: 'any_name',
-    email: 'any_email@email.com',
-    password: 'hashed_password'
-})
 const makeLoadAccountByEmailRepositoryStub = (): LoadAccountByEmailRepository => {
     class LoadAccountByEmailRepositoryStub implements LoadAccountByEmailRepository {
         async loadByEmail (email: string): Promise<AccountModel> {
-            const account = makeFakeAccount()
+            const account = mockAccountModel()
+            account.password = 'hashed_password'
             return await new Promise(resolve => resolve(account))
         }
     }

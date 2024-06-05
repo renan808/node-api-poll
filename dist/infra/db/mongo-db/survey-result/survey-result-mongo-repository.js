@@ -12,11 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SurveyResultMongoRepository = void 0;
 const mongo_helper_1 = require("../helpers/mongo-helper");
 class SurveyResultMongoRepository {
-    // terminar a classe e o teste survey-result-mongo-repository e fzr uns protocol pras classes q tão no infra
     save(data) {
         return __awaiter(this, void 0, void 0, function* () {
-            const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
-            const newSurvey = yield mongo_helper_1.Mongohelper.map(surveyCollection.findOneAndUpdate({
+            const surveyResultsCollection = yield mongo_helper_1.Mongohelper.getCollection('surveyResults');
+            console.log(data.accountId);
+            const newSurvey = yield surveyResultsCollection.findOneAndUpdate({
                 accountId: data.accountId,
                 surveyId: data.surveyId
             }, {
@@ -25,9 +25,10 @@ class SurveyResultMongoRepository {
                     date: data.date
                 }
             }, {
-                upsert: true
-            }));
-            return yield new Promise((resolve, reject) => resolve(newSurvey));
+                upsert: true,
+                returnDocument: 'after'
+            });
+            return yield new Promise((resolve, reject) => resolve(mongo_helper_1.Mongohelper.map(newSurvey)));
         });
     }
 }

@@ -3,16 +3,7 @@ import { SaveSurveyResultController } from './save-survey-result-controller'
 import { forbidden, serverError, ok } from './save-survey-result-protocol'
 import { InvalidParamError } from '@/presentation/errors'
 import Mockdate from 'mockdate'
-
-const makeFakeSurveyData = (): SurveyModel => ({
-    id: 'any_SurveyId',
-    question: 'any_question',
-    answers: [{
-        image: 'any_image',
-        answer: 'any_answer'
-    }],
-    date: new Date()
-})
+import { mockSurveyModel } from '@/domain/tests'
 
 const makeFakeRequest = (): httpRequest => ({
     params: {
@@ -35,7 +26,7 @@ const makeFakeSurveyResult = (): SurveyResultModel => ({
 const makeLoadSurveyById = (): LoadSurveyById => {
     class LoadSurveyByIdStub implements LoadSurveyById {
         async loadById (id: string): Promise<SurveyModel> {
-            return await new Promise(resolve => resolve(makeFakeSurveyData()))
+            return await new Promise(resolve => resolve(mockSurveyModel()))
         }
     }
     return new LoadSurveyByIdStub()
@@ -93,7 +84,7 @@ describe('SaveSurveyController', () => {
         const spySaveSurvey = jest.spyOn(saveSurveyResult, 'save')
         await sut.handle(makeFakeRequest())
         expect(spySaveSurvey).toHaveBeenCalledWith({
-            surveyId: 'any_SurveyId',
+            surveyId: 'any_id',
             accountId: 'any_accountId',
             answer: 'any_answer',
             date: new Date()

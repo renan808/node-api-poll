@@ -4,13 +4,7 @@ import { Mongohelper } from '../../infra/db/mongo-db/helpers/mongo-helper'
 import type { Collection } from 'mongodb'
 import { sign } from 'jsonwebtoken'
 import env from '../config/env'
-
-const makeFakeAccount = (): any => ({
-    name: 'name_test',
-    email: 'emailtest@email.com',
-    password: 'testpassword',
-    role: 'admin'
-})
+import { mockAccountModel } from '@/domain/tests'
 
 describe('Survey routes', () => {
     let SurveyCollection: Collection
@@ -46,7 +40,7 @@ describe('Survey routes', () => {
         })
 
         test('Should return 200 if AddSurveys was called with acessToken', async () => {
-            const response = await AccountCollection.insertOne(makeFakeAccount())
+            const response = await AccountCollection.insertOne(mockAccountModel())
             const acessToken = sign({ id: response.insertedId }, env.jwtSecret)
             await AccountCollection.updateOne({
                 _id: response.insertedId
@@ -73,7 +67,7 @@ describe('Survey routes', () => {
         })
     describe('GET /surveys', () => {
         test('Should return 204 if LoadSurveys was called with acessToken', async () => {
-            const response = await AccountCollection.insertOne(makeFakeAccount())
+            const response = await AccountCollection.insertOne(mockAccountModel())
             const acessToken = sign({ id: response.insertedId }, env.jwtSecret)
             await AccountCollection.updateOne({
                 _id: response.insertedId

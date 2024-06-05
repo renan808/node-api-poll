@@ -46,12 +46,15 @@ exports.Mongohelper = {
             return this.client.db().collection(name);
         });
     },
-    map: (collection) => {
-        if (!collection) {
+    map: (data) => {
+        if (!data) {
             return null;
         }
-        const { _id } = collection, collectionWithoutId = __rest(collection, ["_id"]);
+        const { _id } = data, collectionWithoutId = __rest(data, ["_id"]);
         return Object.assign({}, collectionWithoutId, { id: _id });
+    },
+    mapCollection: (collection) => {
+        return collection.map(i => exports.Mongohelper.map(i));
     }
 };
 //# sourceMappingURL=mongo-helper.js.map

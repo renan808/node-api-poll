@@ -2,12 +2,12 @@ import type { Controller, httpRequest, httpResponse } from '@/presentation/proto
 import { LogControllerDecorator } from './log-controller-decorator'
 import type { LogErrorRepository } from '@/data/protocols/db/log/log-error-repository'
 import { ok, serverError } from '@/presentation/helpers/http/http-helper'
-import type { AccountModel } from '@/domain/models/account'
+import { mockAccountModel } from '@/domain/tests/index'
 
 const makeController = (): Controller => {
     class ControllerStub implements Controller {
         async handle (httpRequest: httpRequest): Promise<httpResponse> {
-            return await new Promise(resolve => resolve(ok(makeFakeAccount())))
+            return await new Promise(resolve => resolve(ok(mockAccountModel())))
         }
     }
     return new ControllerStub()
@@ -37,13 +37,6 @@ const makeFakeserverError = (): httpResponse => {
     return serverError(fakeError)
 }
 
-const makeFakeAccount = (): AccountModel => ({
-    id: 'valid_id',
-    email: 'valid_email@email.com',
-    name: 'valid_name',
-    password: 'valid_password'
-})
-
 interface SutTypes {
     sut: LogControllerDecorator
     controllerStub: Controller
@@ -72,7 +65,7 @@ describe('SignUp Controller', () => {
     test('Should return the same result of the controller', async () => {
         const { sut } = makeSut()
         const httpResponse = await sut.handle(makeFakeRequest())
-        expect(httpResponse).toEqual(ok(makeFakeAccount()))
+        expect(httpResponse).toEqual(ok(mockAccountModel()))
     })
 
     test('Should call LogErrorRepository with correct Error if Controller returns a Server Error', async () => {

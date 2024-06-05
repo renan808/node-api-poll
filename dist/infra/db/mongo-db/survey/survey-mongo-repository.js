@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SurveyMongoRepository = void 0;
 const mongo_helper_1 = require("../helpers/mongo-helper");
+const mongodb_1 = require("mongodb");
 class SurveyMongoRepository {
     add(surveyData) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -22,13 +23,13 @@ class SurveyMongoRepository {
         return __awaiter(this, void 0, void 0, function* () {
             const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
             const surveys = yield surveyCollection.find().toArray();
-            return surveys;
+            return mongo_helper_1.Mongohelper.mapCollection(surveys);
         });
     }
     loadById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
-            const survey = yield surveyCollection.findOne({ _id: id });
+            const survey = yield surveyCollection.findOne({ _id: new mongodb_1.ObjectId(id) });
             return mongo_helper_1.Mongohelper.map(survey);
         });
     }

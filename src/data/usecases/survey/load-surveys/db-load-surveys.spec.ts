@@ -7,7 +7,7 @@ interface SutTypes {
     loadSurveysRepositoryStub: LoadSurveysRepository
 }
 
-const makeFakeSurvey = (): SurveyModel[] => {
+const mockSurveyModel = (): SurveyModel[] => {
     return [{
         id: 'any_id',
         question: 'any_question1',
@@ -31,7 +31,7 @@ const makeFakeSurvey = (): SurveyModel[] => {
 const makeLoadSurveysRepository = (): LoadSurveysRepository => {
     class LoadSurveysRepositoryStub implements LoadSurveysRepository {
         async loadAll (): Promise<SurveyModel[]> {
-            return await new Promise(resolve => resolve(makeFakeSurvey()))
+            return await new Promise(resolve => resolve(mockSurveyModel()))
         }
     }
     return new LoadSurveysRepositoryStub()
@@ -74,6 +74,6 @@ describe('DbLoadSurveysRepository Usecase', () => {
     test('Should return a array of surveys on success', async () => {
         const { sut } = makeSut()
         const surveys = await sut.loadAll()
-        expect(surveys).toEqual(makeFakeSurvey())
+        expect(surveys).toEqual(mockSurveyModel())
     })
 })

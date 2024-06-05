@@ -6,7 +6,7 @@ interface SutTypes {
     loadSurveysStub: LoadSurveys
 }
 
-const makeFakeSurvey = (): SurveyModel[] => {
+const mockSurveyModel = (): SurveyModel[] => {
     return [{
         id: 'any_id',
         question: 'any_question1',
@@ -31,7 +31,7 @@ const makeLoadSurvey = (): LoadSurveys => {
     class LoadSurveyStub implements LoadSurveys {
         async loadAll (): Promise<SurveyModel[]> {
             return await new Promise((resolve, reject) => {
-                resolve(makeFakeSurvey())
+                resolve(mockSurveyModel())
             })
         }
     }
@@ -81,6 +81,6 @@ describe('LoadSurveyController', () => {
     test('Should return 200 and a survey array if LoadSurvey succeeds', async () => {
         const { sut } = makeSut()
         const httpResponse = await sut.handle({})
-        expect(httpResponse).toEqual(ok(makeFakeSurvey()))
+        expect(httpResponse).toEqual(ok(mockSurveyModel()))
     })
 })
