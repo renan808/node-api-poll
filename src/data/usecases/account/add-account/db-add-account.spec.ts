@@ -2,23 +2,13 @@ import type { Hasher, AddAccountParams, AccountModel, AddAccountRepository, Load
 import { mockAccountModel, mockAddAccountParams } from '@/domain/tests'
 import { DbAddAccount } from './db-add-account'
 import { throwError } from '@/domain/tests/tests-helpers'
+import { mockHasher } from '@/domain/tests/mock-cryptography'
 
 interface sutTypes {
     sut: DbAddAccount
     hasherStub: Hasher
     AddAccountRepositoryStub: AddAccountRepository
     loadAccountByEmailRepositoryStub: LoadAccountByEmailRepository
-}
-
-const makeHasher = (): Hasher => {
-    class HasherStub implements Hasher {
-        async hash (value: string): Promise<string> {
-            return await new Promise(resolve => {
-                resolve('hashed_password')
-            })
-        }
-    }
-    return new HasherStub()
 }
 
 const makeAddAccountRepository = (): AddAccountRepository => {
@@ -44,7 +34,7 @@ const makeLoadAccountByEmailRepositoryStub = (): LoadAccountByEmailRepository =>
 
 const makeSut = (): sutTypes => {
     const loadAccountByEmailRepositoryStub = makeLoadAccountByEmailRepositoryStub()
-    const hasherStub = makeHasher()
+    const hasherStub = mockHasher()
     const AddAccountRepositoryStub = makeAddAccountRepository()
     const sut = new DbAddAccount(hasherStub, AddAccountRepositoryStub, loadAccountByEmailRepositoryStub)
     return {
@@ -86,7 +76,7 @@ describe('dbAddAccount Usecase', () => {
         expect(hasherSpy).toHaveBeenCalledWith('any_password')
     })
 
-    test('Should throw if HashComparer Throws', async () => {
+    test('Should throw if HasherStub Throws', async () => {
         const { sut, hasherStub } = makeSut()
         jest.spyOn(hasherStub, 'hash').mockImplementationOnce(throwError)
         const promise = sut.add(mockAddAccountParams())
