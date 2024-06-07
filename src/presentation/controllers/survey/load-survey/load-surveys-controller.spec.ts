@@ -1,6 +1,6 @@
 import { type Controller, type LoadSurveys, type SurveyModel, LoadSurveysController, ok, serverError, noContent } from './load-surveys-protocols'
 import MockDate from 'mockdate'
-import { throwError } from '@/domain/tests/tests-helpers'
+import { throwError } from '@/domain/test/tests-helpers'
 
 interface SutTypes {
     sut: Controller

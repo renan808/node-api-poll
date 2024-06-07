@@ -11,6 +11,6 @@ export const mockAccountModel = (): AccountModel => ({
     id: 'any_id',
     email: 'any_email@email.com',
     name: 'any_name',
-    password: 'any_password',
+    password: 'hashed_password',
     role: 'admin'
 })

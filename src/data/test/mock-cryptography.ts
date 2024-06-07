@@ -2,7 +2,8 @@ import type { Decrypter } from "@/data/protocols/criptography/decrypter"
 import type { HashComparer } from "@/data/protocols/criptography/hash-comparer"
 import type { Encrypter } from "@/data/protocols/criptography/encrypter"
 import type { Hasher } from "@/data/protocols/criptography/hasher"
-
+import type { UpdateAcessTokenRepository } from "../protocols/db/account/updateAcessTokenRepository"
+import type { AuthenticationModel } from "../usecases/account/add-account/db-add-account-protocols"
 export const mockDecrypter = (): Decrypter => {
     class DecrypterSutb implements Decrypter {
         async decrypt (value: string): Promise<string> {
@@ -40,3 +41,17 @@ export const mockHashComparer = (): HashComparer => {
     }
     return new HashComparerStub()
 }
+
+export const mockUpdateAcessTokenRepository = (): UpdateAcessTokenRepository => {
+    class UpdateAcessTokenRepositoryStub implements UpdateAcessTokenRepository {
+        async updateToken (id: string, token: string): Promise<void> {
+            return await new Promise(resolve => resolve())
+        }
+    }
+    return new UpdateAcessTokenRepositoryStub()
+}
+
+export const mockAuthentication = (): AuthenticationModel => ({
+    email: 'any_email@email.com',
+    password: 'any_password'
+})

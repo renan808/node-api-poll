@@ -1,7 +1,7 @@
 import type { LoadSurveysRepository, SurveyModel } from "./db-load-surveys-protocol"
 import { DbLoadSurveys } from './db-load-surveys'
 import MockDate from 'mockdate'
-import { throwError } from "@/domain/tests/tests-helpers"
+import { throwError } from "@/domain/test/tests-helpers"
 
 interface SutTypes {
     sut: DbLoadSurveys

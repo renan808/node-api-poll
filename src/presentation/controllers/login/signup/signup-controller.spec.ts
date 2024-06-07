@@ -3,7 +3,7 @@ import type { AddAccount, AddAccountParams, AccountModel, httpRequest, Validatio
 import { ServerError, MissingParamError } from '@/presentation/errors'
 import { serverError, ok, badRequest } from '@/presentation/helpers/http/http-helper'
 import type { Authentication, AuthenticationModel } from '../login/login-controler-protocols'
-import { mockAccountModel } from '@/domain/tests'
+import { mockAccountModel } from '@/domain/test'
 
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {

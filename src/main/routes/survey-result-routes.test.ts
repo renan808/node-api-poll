@@ -4,7 +4,7 @@ import { Mongohelper } from '../../infra/db/mongo-db/helpers/mongo-helper'
 import type { Collection } from 'mongodb'
 import { sign } from 'jsonwebtoken'
 import env from '../config/env'
-import { mockAccountModel, mockSurveyModel } from '@/domain/tests'
+import { mockAccountModel, mockSurveyModel } from '@/domain/test'
 
 describe('Survey-result routes', () => {
     let SurveyCollection: Collection
