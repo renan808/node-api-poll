@@ -27,7 +27,7 @@ class JwtAdapter {
     decrypt(data) {
         return __awaiter(this, void 0, void 0, function* () {
             const value = jsonwebtoken_1.default.verify(data, this.Secret);
-            return yield new Promise(resolve => resolve(value));
+            return yield Promise.resolve(value);
         });
     }
 }

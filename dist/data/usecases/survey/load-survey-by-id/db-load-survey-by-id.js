@@ -17,7 +17,7 @@ class DbLoadSurveyById {
     loadById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const survey = yield this.loadSurveyById.loadById(id);
-            return yield new Promise((resolve, reject) => resolve(survey));
+            return yield Promise.resolve(survey);
         });
     }
 }

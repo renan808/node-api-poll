@@ -5,7 +5,7 @@ import { mockAccountModel } from "@/domain/test"
 export const mockController = (): Controller => {
     class ControllerStub implements Controller {
         async handle (httpRequest: httpRequest): Promise<httpResponse> {
-            return await new Promise(resolve => resolve(ok(mockAccountModel())))
+            return await Promise.resolve(ok(mockAccountModel()))
         }
     }
     return new ControllerStub()

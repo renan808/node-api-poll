@@ -18,7 +18,7 @@ export const mockLoadAccountByEmailRepository = (): LoadAccountByEmailRepository
     class LoadAccountByEmailRepositoryStub implements LoadAccountByEmailRepository {
         async loadByEmail (email: string): Promise<AccountModel | null> {
             // eslint-disable-next-line prefer-promise-reject-errors
-            return await new Promise(resolve => resolve(mockAccountModel()))
+            return await Promise.resolve(mockAccountModel())
         }
     }
     return new LoadAccountByEmailRepositoryStub()
@@ -27,7 +27,7 @@ export const mockLoadAccountByEmailRepository = (): LoadAccountByEmailRepository
 export const mockLoadAccountByTokenRepository = (): LoadAccountByTokenRepository => {
     class LoadAccountByTokenRepositoryStub implements LoadAccountByTokenRepository {
         async loadByToken (token: string, role): Promise<AccountModel> {
-            return await new Promise(resolve => resolve(mockAccountModel()))
+            return await Promise.resolve(mockAccountModel())
         }
     }
     return new LoadAccountByTokenRepositoryStub()

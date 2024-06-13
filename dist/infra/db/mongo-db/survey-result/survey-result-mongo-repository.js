@@ -28,7 +28,7 @@ class SurveyResultMongoRepository {
                 upsert: true,
                 returnDocument: 'after'
             });
-            return yield new Promise((resolve, reject) => resolve(mongo_helper_1.Mongohelper.map(newSurvey)));
+            return yield Promise.resolve(mongo_helper_1.Mongohelper.map(newSurvey));
         });
     }
 }

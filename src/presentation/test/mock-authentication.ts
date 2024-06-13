@@ -4,7 +4,7 @@ import type { httpRequest } from '../protocols'
 export const mockAuthentication = (): Authentication => {
     class AuthenticationStub implements Authentication {
         async auth (authentication: AuthenticationParams): Promise<string> {
-            return await new Promise(resolve => resolve('any_token'))
+            return await Promise.resolve('any_token')
         }
     }
     return new AuthenticationStub()

@@ -21,7 +21,7 @@ const mockRequest = (): httpRequest => ({
 const mockLoadAccountByTokenStub = (): LoadAccountByToken => {
     class LoadAccountByTokenStub implements LoadAccountByToken {
         async load (acessToken: string, role?: string): Promise<AccountModel | null> {
-            return await new Promise(resolve => resolve(mockAccountModel()))
+            return await Promise.resolve(mockAccountModel())
         }
     }
     return new LoadAccountByTokenStub()
@@ -40,7 +40,7 @@ describe('Auth Middleware', () => {
     test('Should Return 403 if LoadAccountByToken return null', async () => {
         const { sut, loadAccountByTokenStub } = makeSut()
         jest.spyOn(loadAccountByTokenStub, 'load').mockReturnValueOnce(
-             new Promise(resolve => resolve(null))
+             Promise.resolve(null)
         )
         const httpResponse = await sut.handle(mockRequest())
         expect(httpResponse).toEqual(forbidden(new AcessDeniedError()))

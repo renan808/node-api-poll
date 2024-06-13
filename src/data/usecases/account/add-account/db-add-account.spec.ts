@@ -16,7 +16,7 @@ const mockLoadAccountByEmailRepositoryStub = (): LoadAccountByEmailRepository =>
     class LoadAccountByEmailRepositoryStub implements LoadAccountByEmailRepository {
         async loadByEmail (email: string): Promise<AccountModel | null> {
             // eslint-disable-next-line prefer-promise-reject-errors
-            return await new Promise(resolve => resolve(null))
+            return await Promise.resolve(null)
         }
     }
     return new LoadAccountByEmailRepositoryStub()
@@ -54,7 +54,7 @@ describe('dbAddAccount Usecase', () => {
     test('Should throw if LoadAccountByEmailRepository not return null', async () => {
         const { sut, loadAccountByEmailRepositoryStub } = makeSut()
         // eslint-disable-next-line prefer-promise-reject-errors
-        jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail').mockReturnValueOnce(new Promise((resolve, reject) => resolve(mockAccountModel())))
+        jest.spyOn(loadAccountByEmailRepositoryStub, 'loadByEmail').mockReturnValueOnce(Promise.resolve(mockAccountModel()))
         const promise = sut.add(mockAddAccountParams())
         await expect(promise).rejects.toThrow()
     })

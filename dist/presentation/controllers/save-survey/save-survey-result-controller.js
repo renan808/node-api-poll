@@ -38,7 +38,7 @@ class SaveSurveyResultController {
                     accountId,
                     answer
                 });
-                return yield new Promise(resolve => resolve((0, http_helper_1.ok)(res)));
+                return yield Promise.resolve((0, http_helper_1.ok)(res));
             }
             catch (error) {
                 console.log(error);

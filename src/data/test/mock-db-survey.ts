@@ -9,7 +9,7 @@ import { mockSurveyModel } from "@/domain/test"
 export const mockAddSurveyRepository = (): AddSurveyRepository => {
     class AddsurveyRepositoryStub implements AddSurveyRepository {
         async add (data: AddSurveyParams): Promise<void> {
-            return await new Promise(resolve => resolve())
+            return await Promise.resolve()
         }
     }
 
@@ -19,7 +19,7 @@ export const mockAddSurveyRepository = (): AddSurveyRepository => {
 export const mockLoadSurveyByIdRepository = (): LoadSurveyByIdRepository => {
     class LoadSurveyByIdRepositoryStub implements LoadSurveyByIdRepository {
         async loadById (id: string): Promise<SurveyModel> {
-            return await new Promise(resolve => resolve(mockSurveyModel()))
+            return await Promise.resolve(mockSurveyModel())
         }
     }
     return new LoadSurveyByIdRepositoryStub()
@@ -32,7 +32,7 @@ export const mockSurveyResult = (): SurveyResultModel => Object.assign(
 export const mockSaveSurveyResultRepository = (): SaveSurveyResultRepository => {
     class SaveSurveyResultRepository implements SaveSurveyResultRepository {
         async save (data: SaveSurveyResultParams): Promise<SurveyResultModel> {
-            return await new Promise((resolve, reject) => resolve(mockSurveyResult()))
+            return await Promise.resolve(mockSurveyResult())
         }
     }
 

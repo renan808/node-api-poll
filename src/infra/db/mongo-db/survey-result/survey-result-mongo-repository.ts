@@ -16,6 +16,6 @@ export class SurveyResultMongoRepository implements SaveSurveyResultRepository {
             upsert: true,
             returnDocument: 'after'
         })
-        return await new Promise((resolve, reject) => resolve(Mongohelper.map(newSurvey)))
+        return await Promise.resolve(Mongohelper.map(newSurvey))
     }
 }

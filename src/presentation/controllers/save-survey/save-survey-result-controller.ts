@@ -26,7 +26,7 @@ export class SaveSurveyResultController implements Controller {
                 accountId,
                 answer
             })
-            return await new Promise(resolve => resolve(ok(res)))
+            return await Promise.resolve(ok(res))
         } catch (error) {
             console.log(error)
             return serverError(error)

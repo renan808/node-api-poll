@@ -17,7 +17,7 @@ class DbSaveSurveyResult {
     save(data) {
         return __awaiter(this, void 0, void 0, function* () {
             const surveyResult = yield this.SaveSurveyResultRepository.save(data);
-            return yield new Promise((resolve, reject) => resolve(surveyResult));
+            return yield Promise.resolve(surveyResult);
         });
     }
 }

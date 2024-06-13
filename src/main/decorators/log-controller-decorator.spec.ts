@@ -39,7 +39,7 @@ describe('SignUp Controller', () => {
         const { sut, controllerStub, logErrorRepositoryStub } = makeSut()
         const LogSpy = jest.spyOn(logErrorRepositoryStub, 'logError')
         const error = mockserverError()
-        jest.spyOn(controllerStub, 'handle').mockReturnValueOnce(new Promise((resolve, reject) => resolve(error)))
+        jest.spyOn(controllerStub, 'handle').mockReturnValueOnce(Promise.resolve(error))
         await sut.handle(mockRequest())
         expect(LogSpy).toHaveBeenCalledWith('any_stack')
     })

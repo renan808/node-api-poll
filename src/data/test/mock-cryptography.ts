@@ -7,7 +7,7 @@ import type { AuthenticationParams } from "../usecases/account/add-account/db-ad
 export const mockDecrypter = (): Decrypter => {
     class DecrypterSutb implements Decrypter {
         async decrypt (value: string): Promise<string> {
-            return await new Promise(resolve => resolve('any_value'))
+            return await Promise.resolve('any_value')
         }
     }
     return new DecrypterSutb()
@@ -27,7 +27,7 @@ export const mockHasher = (): Hasher => {
 export const mockEncrypter = (): Encrypter => {
     class EncrypterStub implements Encrypter {
         async encrypt (id: string): Promise<string> {
-            return await new Promise(resolve => resolve('any_token'))
+            return await Promise.resolve('any_token')
         }
     }
     return new EncrypterStub()
@@ -36,7 +36,7 @@ export const mockEncrypter = (): Encrypter => {
 export const mockHashComparer = (): HashComparer => {
     class HashComparerStub implements HashComparer {
         async compare (password: string, hash: string): Promise<boolean> {
-            return await new Promise(resolve => resolve(true))
+            return await Promise.resolve(true)
         }
     }
     return new HashComparerStub()
@@ -45,7 +45,7 @@ export const mockHashComparer = (): HashComparer => {
 export const mockUpdateAcessTokenRepository = (): UpdateAcessTokenRepository => {
     class UpdateAcessTokenRepositoryStub implements UpdateAcessTokenRepository {
         async updateToken (id: string, token: string): Promise<void> {
-            return await new Promise(resolve => resolve())
+            return await Promise.resolve()
         }
     }
     return new UpdateAcessTokenRepositoryStub()
