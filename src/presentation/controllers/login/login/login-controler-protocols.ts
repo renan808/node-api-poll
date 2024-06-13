@@ -1,2 +1,6 @@
 export * from '@/presentation/protocols'
 export * from '@/domain/use-cases/account/authentication'
+export * from '../signup/signup-controler-protocols'
+export * from '@/validation/validators/test/mock-validation'
+export * from '@/presentation/errors'
+export * from './login-controller'
