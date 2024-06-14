@@ -19,4 +19,5 @@ __exportStar(require("@/domain/use-cases/survey/load-surveys"), exports);
 __exportStar(require("../../../helpers/http/http-helper"), exports);
 __exportStar(require("./load-surveys-controller"), exports);
 __exportStar(require("@/domain/models/survey"), exports);
+__exportStar(require("@/presentation/test/mock-survey"), exports);
 //# sourceMappingURL=load-surveys-protocols.js.map
