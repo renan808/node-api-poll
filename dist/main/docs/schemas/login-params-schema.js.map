@@ -1,0 +1,1 @@
+{"version":3,"file":"login-params-schema.js","sourceRoot":"","sources":["../../../../src/main/docs/schemas/login-params-schema.ts"],"names":[],"mappings":";;;AAAa,QAAA,iBAAiB,GAAG;IAC7B,IAAI,EAAE,QAAQ;IACd,UAAU,EAAE;QACR,KAAK,EAAE;YACH,IAAI,EAAE,QAAQ;SACjB;QACD,QAAQ,EAAE;YACN,IAAI,EAAE,QAAQ;SACjB;KACJ;IACD,QAAQ,EAAE,CAAC,OAAO,EAAE,UAAU,CAAC;CAClC,CAAA"}
