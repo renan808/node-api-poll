@@ -17,4 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./server-error"), exports);
 __exportStar(require("./bad-request"), exports);
 __exportStar(require("./unauthorized"), exports);
+__exportStar(require("./forbidden"), exports);
 //# sourceMappingURL=index.js.map
