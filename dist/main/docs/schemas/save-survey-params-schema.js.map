@@ -1,0 +1,1 @@
+{"version":3,"file":"save-survey-params-schema.js","sourceRoot":"","sources":["../../../../src/main/docs/schemas/save-survey-params-schema.ts"],"names":[],"mappings":";;;AAAa,QAAA,4BAA4B,GAAG;IACxC,IAAI,EAAE,QAAQ;IACd,UAAU,EAAE;QACR,MAAM,EAAE;YACJ,IAAI,EAAE,QAAQ;SACjB;KACJ;IACD,QAAQ,EAAE,CAAC,QAAQ,CAAC;CACvB,CAAA"}

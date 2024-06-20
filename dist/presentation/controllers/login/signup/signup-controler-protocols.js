@@ -18,4 +18,8 @@ __exportStar(require("@/presentation/protocols"), exports);
 __exportStar(require("@/domain/use-cases/account/add-account"), exports);
 __exportStar(require("@/domain/models/account"), exports);
 __exportStar(require("@/presentation/protocols/validation"), exports);
+__exportStar(require("@/presentation/test/mock-account"), exports);
+__exportStar(require("@/validation/validators/test/mock-validation"), exports);
+__exportStar(require("@/domain/use-cases/account/authentication"), exports);
+__exportStar(require("./signup-controller"), exports);
 //# sourceMappingURL=signup-controler-protocols.js.map

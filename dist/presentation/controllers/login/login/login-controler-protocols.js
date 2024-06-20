@@ -16,4 +16,8 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("@/presentation/protocols"), exports);
 __exportStar(require("@/domain/use-cases/account/authentication"), exports);
+__exportStar(require("../signup/signup-controler-protocols"), exports);
+__exportStar(require("@/validation/validators/test/mock-validation"), exports);
+__exportStar(require("@/presentation/errors"), exports);
+__exportStar(require("./login-controller"), exports);
 //# sourceMappingURL=login-controler-protocols.js.map
