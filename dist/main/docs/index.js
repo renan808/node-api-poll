@@ -16,9 +16,13 @@ exports.default = {
     paths: {
         '/login': index_1.loginPath,
         '/surveys': index_1.surveyPath,
+        '/surveys/{surveyId}/results': index_1.surveyResultPath,
         '/signup': index_1.signupPath
     },
     schemas: {
+        surveyResult: index_2.surveyResultSchema,
+        saveSurveyResultParams: index_2.saveSurveyResultParamsSchema,
+        addSurveyParams: index_2.addSurveyParamsSchema,
         account: index_2.accountSchema,
         token: index_2.tokenSchema,
         signupParams: index_2.signupParamsSchema,

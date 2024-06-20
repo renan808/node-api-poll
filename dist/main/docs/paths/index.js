@@ -17,4 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./login-path"), exports);
 __exportStar(require("./survey-path"), exports);
 __exportStar(require("./signup-path"), exports);
+__exportStar(require("./survey-result-path"), exports);
 //# sourceMappingURL=index.js.map

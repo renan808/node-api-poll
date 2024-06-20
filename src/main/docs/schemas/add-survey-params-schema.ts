@@ -1,9 +1,6 @@
-export const surveySchema = {
+export const addSurveyParamsSchema = {
     type: 'object',
     properties: {
-        id: {
-            type: 'string'
-        },
         answers: {
             type: 'array',
             items: {
@@ -12,9 +9,6 @@ export const surveySchema = {
         },
         question: {
             type: 'string'
-        },
-        date: {
-            type: 'date'
         }
     }
 }

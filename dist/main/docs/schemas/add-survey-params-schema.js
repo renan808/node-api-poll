@@ -1,9 +1,9 @@
-export const surveySchema = {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.addSurveyParamsSchema = void 0;
+exports.addSurveyParamsSchema = {
     type: 'object',
     properties: {
-        id: {
-            type: 'string'
-        },
         answers: {
             type: 'array',
             items: {
@@ -12,9 +12,7 @@ export const surveySchema = {
         },
         question: {
             type: 'string'
-        },
-        date: {
-            type: 'date'
         }
     }
-}
+};
+//# sourceMappingURL=add-survey-params-schema.js.map

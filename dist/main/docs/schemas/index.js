@@ -25,4 +25,7 @@ __exportStar(require("./api-key-auth-schema"), exports);
 __exportStar(require("./signup-params-schema"), exports);
 __exportStar(require("./signup-params-schema"), exports);
 __exportStar(require("./token-schema"), exports);
+__exportStar(require("./add-survey-params-schema"), exports);
+__exportStar(require("./save-survey-params-schema"), exports);
+__exportStar(require("./survey-resuslt-schema"), exports);
 //# sourceMappingURL=index.js.map

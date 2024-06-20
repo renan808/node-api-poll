@@ -1,24 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.surveySchema = void 0;
-exports.surveySchema = {
+exports.surveyResultSchema = void 0;
+exports.surveyResultSchema = {
     type: 'object',
     properties: {
-        id: {
+        accountId: {
             type: 'string'
         },
-        answers: {
-            type: 'array',
-            items: {
-                $ref: '#/schemas/surveyAnswer'
-            }
+        surveyId: {
+            type: 'string'
         },
-        question: {
+        answer: {
             type: 'string'
         },
         date: {
             type: 'date'
+        },
+        id: {
+            type: 'string'
         }
     }
 };
-//# sourceMappingURL=survey-schema.js.map
+//# sourceMappingURL=survey-resuslt-schema.js.map
