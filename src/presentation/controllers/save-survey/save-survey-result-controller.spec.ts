@@ -3,7 +3,7 @@ import { forbidden, serverError, ok, throwError, InvalidParamError, SaveSurveyRe
 import Mockdate from 'mockdate'
 import { mockLoadSurveyById, mockSaveSurveyResult } from '@/presentation/test/mock-save-survey-result'
 import { mockRequest } from '@/domain/test/mock-save-survey-model'
-
+import { mockSurveyResult } from '@/domain/test'
 interface SutTypes {
     sut: SaveSurveyResultController
     loadSurveyById: LoadSurveyById
@@ -79,12 +79,6 @@ describe('SaveSurveyController', () => {
     test('Should return 200 on success', async () => {
         const { sut } = makeSut()
         const httpResponse = await sut.handle(mockRequest())
-        expect(httpResponse).toEqual(ok({
-            id: 'any_id',
-            surveyId: 'any_SurveyId',
-            accountId: 'any_accountId',
-            answer: 'any_answer',
-            date: new Date()
-        }))
+        expect(httpResponse).toEqual(ok(mockSurveyResult()))
     })
 })
