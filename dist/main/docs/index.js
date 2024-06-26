@@ -20,6 +20,7 @@ exports.default = {
         '/signup': index_1.signupPath
     },
     schemas: {
+        surveyResultAnswer: index_2.surveyResultAnswerSchema,
         surveyResult: index_2.surveyResultSchema,
         saveSurveyResultParams: index_2.saveSurveyResultParamsSchema,
         addSurveyParams: index_2.addSurveyParamsSchema,

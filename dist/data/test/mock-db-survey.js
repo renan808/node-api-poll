@@ -9,8 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mockSaveSurveyResultRepository = exports.mockSurveyResult = exports.mockLoadSurveyByIdRepository = exports.mockAddSurveyRepository = void 0;
-const mock_save_survey_model_1 = require("@/domain/test/mock-save-survey-model");
+exports.mockSaveSurveyResultRepository = exports.mockLoadSurveyByIdRepository = exports.mockAddSurveyRepository = void 0;
 const test_1 = require("@/domain/test");
 const mockAddSurveyRepository = () => {
     class AddsurveyRepositoryStub {
@@ -34,13 +33,11 @@ const mockLoadSurveyByIdRepository = () => {
     return new LoadSurveyByIdRepositoryStub();
 };
 exports.mockLoadSurveyByIdRepository = mockLoadSurveyByIdRepository;
-const mockSurveyResult = () => Object.assign({}, (0, mock_save_survey_model_1.mockSurveyResultData)(), { id: 'any_id' });
-exports.mockSurveyResult = mockSurveyResult;
 const mockSaveSurveyResultRepository = () => {
     class SaveSurveyResultRepository {
         save(data) {
             return __awaiter(this, void 0, void 0, function* () {
-                return yield Promise.resolve((0, exports.mockSurveyResult)());
+                return yield Promise.resolve((0, test_1.mockSurveyResult)());
             });
         }
     }

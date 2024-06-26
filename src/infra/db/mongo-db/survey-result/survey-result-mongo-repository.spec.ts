@@ -87,6 +87,7 @@ describe('Survey Result Mongo Repository', () => {
             })
 
             expect(res).toBeTruthy()
+            expect(res.answers[0].answer).toBe(survey.answers[1].answer)
             expect(res.surveyId).toEqual(survey.id)
             expect(res.answers[0].count).toBe(1)
             expect(res.answers[0].percent).toBe(100)

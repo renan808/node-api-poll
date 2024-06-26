@@ -5,7 +5,7 @@ exports.surveyAnswerSchema = {
     type: 'object',
     properties: {
         image: 'string',
-        response: 'string'
+        answer: 'string'
     }
 };
 //# sourceMappingURL=survey-answer-schema.js.map
