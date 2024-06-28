@@ -22,6 +22,7 @@ describe('Survey Result Mongo Repository', () => {
                 image: 'any_image',
                 answer: 'any_answer'
             }, {
+                image: 'other_image',
                 answer: 'other_answer'
             }]
         })
@@ -67,6 +68,8 @@ describe('Survey Result Mongo Repository', () => {
             expect(res.surveyId).toEqual(survey.id)
             expect(res.answers[0].count).toBe(1)
             expect(res.answers[0].percent).toBe(100)
+            expect(res.answers[1].count).toBe(0)
+            expect(res.answers[1].percent).toBe(0)
         })
 
         test('Should update a survey result if its not new', async () => {
@@ -85,12 +88,14 @@ describe('Survey Result Mongo Repository', () => {
                 answer: survey.answers[1].answer,
                 date: new Date()
             })
-
+            console.log(res)
             expect(res).toBeTruthy()
             expect(res.answers[0].answer).toBe(survey.answers[1].answer)
             expect(res.surveyId).toEqual(survey.id)
             expect(res.answers[0].count).toBe(1)
             expect(res.answers[0].percent).toBe(100)
+            expect(res.answers[1].count).toBe(0)
+            expect(res.answers[1].percent).toBe(0)
         })
     })
 })
