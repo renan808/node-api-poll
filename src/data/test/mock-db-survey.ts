@@ -1,9 +1,10 @@
 import type { AddSurveyRepository } from "../protocols/db/survey/add-survey-repository"
-import type { AddSurveyParams } from "../usecases/survey/add-survey/add-survey-protocols"
+import type { AddSurveyParams } from "../use-cases/survey/add-survey/add-survey-protocols"
 import type { LoadSurveyByIdRepository } from "../protocols/db/survey/load-survey-by-id-repository"
-import type { SurveyModel } from "../usecases/survey/load-survey-by-id/db-load-survey-by-id-protocol"
-import type { SurveyResultModel, SaveSurveyResultRepository, SaveSurveyResultParams } from "../usecases/survey-result/save-survey-result/db-save-survey-result-protocol"
+import type { SurveyModel } from "../use-cases/survey/load-survey-by-id/db-load-survey-by-id-protocol"
+import type { SurveyResultModel, SaveSurveyResultRepository, SaveSurveyResultParams } from "../use-cases/survey-result/save-survey-result/db-save-survey-result-protocol"
 import { mockSurveyModel, mockSurveyResult } from "@/domain/test"
+import type { LoadSurveyResultRepository } from "../protocols/db/survey-result/load-survey-result-repository"
 
 export const mockAddSurveyRepository = (): AddSurveyRepository => {
     class AddsurveyRepositoryStub implements AddSurveyRepository {
@@ -25,11 +26,20 @@ export const mockLoadSurveyByIdRepository = (): LoadSurveyByIdRepository => {
 }
 
 export const mockSaveSurveyResultRepository = (): SaveSurveyResultRepository => {
-    class SaveSurveyResultRepository implements SaveSurveyResultRepository {
+    class SaveSurveyResultRepositoryStub implements SaveSurveyResultRepository {
         async save (data: SaveSurveyResultParams): Promise<SurveyResultModel> {
             return await Promise.resolve(mockSurveyResult())
         }
     }
 
-    return new SaveSurveyResultRepository()
+    return new SaveSurveyResultRepositoryStub()
+}
+
+export const mockLoadSurveyResultRepository = (): LoadSurveyResultRepository => {
+    class LoadSurveyResultRepositoryStub implements LoadSurveyResultRepository {
+        async load (surveyId: string): Promise<SurveyResultModel> {
+            return await Promise.resolve(mockSurveyResult())
+        }
+    }
+    return new LoadSurveyResultRepositoryStub()
 }

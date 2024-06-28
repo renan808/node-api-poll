@@ -1,4 +1,4 @@
-import type { SaveSurveyResultRepository, SaveSurveyResultParams, SurveyResultModel } from "@/data/usecases/survey-result/save-survey-result/db-save-survey-result-protocol"
+import type { SaveSurveyResultRepository, SaveSurveyResultParams, SurveyResultModel } from "@/data/use-cases/survey-result/save-survey-result/db-save-survey-result-protocol"
 import { Mongohelper } from "../helpers/mongo-helper"
 import { ObjectId } from 'mongodb'
 
