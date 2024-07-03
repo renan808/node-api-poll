@@ -44,7 +44,6 @@ describe('Survey-result routes', () => {
                     acessToken
                 }
             })
-            console.log(survey.insertedId.toString())
             await request(app)
             // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
             .put(`/api/surveys/${survey.insertedId.toString()}/results`)

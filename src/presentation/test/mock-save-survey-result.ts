@@ -1,4 +1,4 @@
-import type { LoadSurveyById, SurveyModel, SaveSurveyResult, SurveyResultModel, SaveSurveyResultParams } from "../controllers/save-survey/save-survey-result-protocol"
+import type { LoadSurveyById, SurveyModel, SaveSurveyResult, SaveSurveyResultParams, SurveyResultModel } from "../controllers/save-survey/save-survey-result-protocol"
 import { mockSurveyModel, mockSurveyResult } from '@/domain/test'
 
 export const mockLoadSurveyById = (): LoadSurveyById => {
@@ -12,8 +12,8 @@ export const mockLoadSurveyById = (): LoadSurveyById => {
 
 export const mockSaveSurveyResult = (): SaveSurveyResult => {
     class SaveSurveyResultStub implements SaveSurveyResult {
-        async save (data: SaveSurveyResultParams): Promise<SurveyResultModel> {
-            return await Promise.resolve(mockSurveyResult())
+        async save (data: SaveSurveyResultParams): Promise<SurveyResultModel | null> {
+           return await Promise.resolve(mockSurveyResult())
         }
     }
     return new SaveSurveyResultStub()

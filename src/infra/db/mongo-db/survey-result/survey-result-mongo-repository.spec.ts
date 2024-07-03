@@ -53,26 +53,24 @@ describe('Survey Result Mongo Repository', () => {
         await surveyCollection.deleteMany({})
         await accountCollection.deleteMany({})
     })
+
     describe('save()', () => {
-        test('Should add a survey result if its new', async () => {
+        test('Should add a surveyResult if its new', async () => {
             const sut = makeSut()
             const survey = await mockSurveyModel()
             const account = await mockAccount()
-            const res = await sut.save({
+            await sut.save({
                 surveyId: survey.id,
                 accountId: account.id,
                 answer: survey.answers[0].answer,
                 date: new Date()
             })
+            const res = surveyResultsCollection.find({ surveyId: survey.id, accountId: account.id }).toArray()
             expect(res).toBeTruthy()
-            expect(res.surveyId).toEqual(survey.id)
-            expect(res.answers[0].count).toBe(1)
-            expect(res.answers[0].percent).toBe(100)
-            expect(res.answers[1].count).toBe(0)
-            expect(res.answers[1].percent).toBe(0)
+            expect((await res).length).toBe(1)
         })
 
-        test('Should update a survey result if its not new', async () => {
+        test('Should update a surveyResult if its not new', async () => {
             const sut = makeSut()
             const survey = await mockSurveyModel()
             const account = await mockAccount()
@@ -82,20 +80,39 @@ describe('Survey Result Mongo Repository', () => {
                 answer: survey.answers[0].answer,
                 date: new Date()
             })
-            const res = await sut.save({
+            await sut.save({
                 surveyId: survey.id,
                 accountId: account.id,
                 answer: survey.answers[1].answer,
                 date: new Date()
             })
+            const res = surveyResultsCollection.find({ surveyId: survey.id, accountId: account.id }).toArray()
+            expect(res).toBeTruthy()
+            expect((await res).length).toBe(1)
+        })
+
+    describe('load()', () => {
+        test('Should load a surveyResult', async () => {
+            const sut = makeSut()
+            const survey = await mockSurveyModel()
+            const account = await mockAccount()
+            await surveyResultsCollection.insertOne({
+                surveyId: new ObjectId(survey.id),
+                accountId: new ObjectId(account.id),
+                answer: survey.answers[0].answer,
+                date: new Date()
+            })
+            await sut.save({
+                surveyId: survey.id,
+                accountId: account.id,
+                answer: survey.answers[0].answer,
+                date: new Date()
+            })
+            const res = await sut.loadBySurveyId(survey.id)
             console.log(res)
             expect(res).toBeTruthy()
-            expect(res.answers[0].answer).toBe(survey.answers[1].answer)
-            expect(res.surveyId).toEqual(survey.id)
-            expect(res.answers[0].count).toBe(1)
-            expect(res.answers[0].percent).toBe(100)
-            expect(res.answers[1].count).toBe(0)
-            expect(res.answers[1].percent).toBe(0)
+            expect(res?.surveyId).toEqual(survey.id)
         })
+    })
     })
 })

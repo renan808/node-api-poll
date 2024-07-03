@@ -114,7 +114,6 @@ describe('DbAuthentication Usecase', () => {
     test('Should update token on UpdateAcessToken succeeds', async () => {
         const { sut } = makeSut()
         const res = await sut.auth(mockAuthentication())
-        console.log(res)
         expect(res).toBeTruthy()
     })
 })
