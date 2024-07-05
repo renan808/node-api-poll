@@ -24,6 +24,12 @@ describe('Survey Result Mongo Repository', () => {
             }, {
                 image: 'other_image',
                 answer: 'other_answer'
+            }, {
+                image: 'image3',
+                answer: 'answer3'
+            }, {
+                image: 'image4',
+                answer: 'answer5'
             }]
         })
         const survey = await surveyCollection.findOne({ _id: idSurvey.insertedId })
@@ -96,12 +102,27 @@ describe('Survey Result Mongo Repository', () => {
             const sut = makeSut()
             const survey = await mockSurveyModel()
             const account = await mockAccount()
-            await surveyResultsCollection.insertOne({
+            await surveyResultsCollection.insertMany([{
                 surveyId: new ObjectId(survey.id),
                 accountId: new ObjectId(account.id),
                 answer: survey.answers[0].answer,
                 date: new Date()
-            })
+            }, {
+                surveyId: new ObjectId(survey.id),
+                accountId: new ObjectId(account.id),
+                answer: survey.answers[0].answer,
+                date: new Date()
+            }, {
+                surveyId: new ObjectId(survey.id),
+                accountId: new ObjectId(account.id),
+                answer: survey.answers[1].answer,
+                date: new Date()
+            }, {
+                surveyId: new ObjectId(survey.id),
+                accountId: new ObjectId(account.id),
+                answer: survey.answers[1].answer,
+                date: new Date()
+            }])
             await sut.save({
                 surveyId: survey.id,
                 accountId: account.id,
@@ -112,6 +133,12 @@ describe('Survey Result Mongo Repository', () => {
             console.log(res)
             expect(res).toBeTruthy()
             expect(res?.surveyId).toEqual(survey.id)
+            expect(res.answers[0].count).toBe(2)
+            expect(res.answers[0].percent).toBe(50)
+            expect(res.answers[1].count).toBe(2)
+            expect(res.answers[1].percent).toBe(50)
+            expect(res.answers[2].count).toBe(0)
+            expect(res.answers[2].percent).toBe(0)
         })
     })
     })

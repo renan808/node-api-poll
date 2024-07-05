@@ -4,6 +4,7 @@ import Mockdate from 'mockdate'
 import { mockLoadSurveyById, mockSaveSurveyResult } from '@/presentation/test/mock-save-survey-result'
 import { mockRequest } from '@/domain/test/mock-save-survey-model'
 import { mockSurveyResult } from '@/domain/test'
+
 interface SutTypes {
     sut: SaveSurveyResultController
     loadSurveyById: LoadSurveyById

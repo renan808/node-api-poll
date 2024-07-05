@@ -4,7 +4,7 @@ import type { LoadSurveyResultRepository } from "@/data/protocols/db/survey-resu
 
 export class DbLoadSurveyResult implements LoadSurveyResult {
     constructor (private readonly loadSurveyResultRepository: LoadSurveyResultRepository) {}
-    async load (surveyId: string): Promise<SurveyResultModel | null> {
+    async loadBySurveyId (surveyId: string): Promise<SurveyResultModel | null> {
         const response = await this.loadSurveyResultRepository.loadBySurveyId(surveyId)
         return response
     }
