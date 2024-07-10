@@ -1,5 +1,5 @@
 import type { AddAccountRepository } from "../protocols/db/account/add-account-repository"
-import type { AddAccountParams, AccountModel, LoadAccountByEmailRepository } from "../usecases/account/add-account/db-add-account-protocols"
+import type { AddAccountParams, AccountModel, LoadAccountByEmailRepository } from "../use-cases/account/add-account/db-add-account-protocols"
 import { mockAccountModel } from "@/domain/test"
 import type { LoadAccountByTokenRepository } from "../protocols/db/account/load-account-by-token-repository"
 

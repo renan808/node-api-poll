@@ -30,6 +30,9 @@ class SurveyMongoRepository {
         return __awaiter(this, void 0, void 0, function* () {
             const surveyCollection = yield mongo_helper_1.Mongohelper.getCollection('surveys');
             const survey = yield surveyCollection.findOne({ _id: new mongodb_1.ObjectId(id) });
+            if (!survey) {
+                return null;
+            }
             return mongo_helper_1.Mongohelper.map(survey);
         });
     }

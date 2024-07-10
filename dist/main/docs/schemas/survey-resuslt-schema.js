@@ -4,21 +4,22 @@ exports.surveyResultSchema = void 0;
 exports.surveyResultSchema = {
     type: 'object',
     properties: {
-        accountId: {
-            type: 'string'
-        },
         surveyId: {
             type: 'string'
         },
-        answer: {
-            type: 'string'
+        answers: {
+            type: 'array',
+            items: {
+                $ref: '#/schemas/surveyResultAnswer'
+            }
         },
         date: {
-            type: 'date'
+            type: 'string'
         },
-        id: {
+        question: {
             type: 'string'
         }
-    }
+    },
+    required: ['surveyId', 'answers', 'date', 'question']
 };
 //# sourceMappingURL=survey-resuslt-schema.js.map

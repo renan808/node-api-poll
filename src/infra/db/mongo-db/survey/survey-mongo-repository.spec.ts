@@ -12,7 +12,7 @@ const makeSut = (): SurveyMongoRepository => {
 
 const mockSurveyModel = (): SurveyModel[] => {
     return [{
-        id: 'any_id',
+        id: 'any_survey_id',
         question: 'any_question1',
         answers: [{
             image: 'any_img',
@@ -85,8 +85,8 @@ describe('Survey Mongo Repository', () => {
             })
             const survey = await sut.loadById(res.insertedId.toString())
             expect(survey).toBeTruthy()
-            expect(survey.id).toBeTruthy()
-            expect(survey.question).toBe('any_question1')
+            expect(survey?.id).toBeTruthy()
+            expect(survey?.question).toBe('any_question1')
         })
     })
 })

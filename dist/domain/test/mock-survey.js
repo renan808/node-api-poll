@@ -11,16 +11,25 @@ const mockAddSurveyParams = () => ({
 });
 exports.mockAddSurveyParams = mockAddSurveyParams;
 const mockSurveyResult = () => ({
-    surveyId: 'any_SurveyId',
-    id: 'any_id',
-    accountId: 'any_accountId',
-    answer: 'any_answer',
+    surveyId: 'any_survey_id',
+    question: 'any_question',
+    answers: [{
+            image: 'any_image',
+            count: 1,
+            percent: 20,
+            answer: 'any_answer'
+        }, {
+            image: 'any_image',
+            count: 10,
+            percent: 80,
+            answer: 'any_answer'
+        }],
     date: new Date()
 });
 exports.mockSurveyResult = mockSurveyResult;
 const mockSurveyModel = () => {
     return {
-        id: 'any_id',
+        id: 'any_survey_id',
         question: 'any_question1',
         answers: [{
                 image: 'any_img',

@@ -3,7 +3,7 @@ import type { HashComparer } from "@/data/protocols/criptography/hash-comparer"
 import type { Encrypter } from "@/data/protocols/criptography/encrypter"
 import type { Hasher } from "@/data/protocols/criptography/hasher"
 import type { UpdateAcessTokenRepository } from "../protocols/db/account/updateAcessTokenRepository"
-import type { AuthenticationParams } from "../usecases/account/add-account/db-add-account-protocols"
+import type { AuthenticationParams } from "../use-cases/account/add-account/db-add-account-protocols"
 export const mockDecrypter = (): Decrypter => {
     class DecrypterSutb implements Decrypter {
         async decrypt (value: string): Promise<string> {
