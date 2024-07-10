@@ -1,9 +1,10 @@
 import type { SaveSurveyResult, LoadSurveyById } from './save-survey-result-protocol'
 import { forbidden, serverError, ok, throwError, InvalidParamError, SaveSurveyResultController } from './save-survey-result-protocol'
 import Mockdate from 'mockdate'
-import { mockLoadSurveyById, mockSaveSurveyResult } from '@/presentation/test/mock-save-survey-result'
+import { mockSaveSurveyResult } from '@/presentation/test/mock-survey-result'
 import { mockRequest } from '@/domain/test/mock-save-survey-model'
 import { mockSurveyResult } from '@/domain/test'
+import { mockLoadSurveyById } from '@/presentation/test/mock-survey'
 
 interface SutTypes {
     sut: SaveSurveyResultController
@@ -39,7 +40,7 @@ describe('SaveSurveyController', () => {
 
     test('Should return 403 if loadSurveyById returns null', async () => {
         const { sut, loadSurveyById } = makeSut()
-        jest.spyOn(loadSurveyById, 'loadById').mockReturnValueOnce(null)
+        jest.spyOn(loadSurveyById, 'loadById').mockReturnValueOnce(Promise.resolve(null))
         const res = await sut.handle(mockRequest())
         expect(res).toEqual(forbidden(new InvalidParamError('surveyId')))
     })
@@ -49,7 +50,7 @@ describe('SaveSurveyController', () => {
         const spySaveSurvey = jest.spyOn(saveSurveyResult, 'save')
         await sut.handle(mockRequest())
         expect(spySaveSurvey).toHaveBeenCalledWith({
-            surveyId: 'any_id',
+            surveyId: 'any_survey_id',
             accountId: 'any_accountId',
             answer: 'any_answer',
             date: new Date()

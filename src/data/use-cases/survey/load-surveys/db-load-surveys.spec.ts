@@ -10,7 +10,7 @@ interface SutTypes {
 
 const mockSurveyModel = (): SurveyModel[] => {
     return [{
-        id: 'any_id',
+        id: 'any_survey_id',
         question: 'any_question1',
         answers: [{
             image: 'any_img',

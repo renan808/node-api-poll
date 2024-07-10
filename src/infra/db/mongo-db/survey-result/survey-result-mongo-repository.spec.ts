@@ -97,7 +97,7 @@ describe('Survey Result Mongo Repository', () => {
             expect((await res).length).toBe(1)
         })
 
-    describe('load()', () => {
+    describe('loadBySurveyId()', () => {
         test('Should load a surveyResult', async () => {
             const sut = makeSut()
             const survey = await mockSurveyModel()

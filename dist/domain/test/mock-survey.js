@@ -29,7 +29,7 @@ const mockSurveyResult = () => ({
 exports.mockSurveyResult = mockSurveyResult;
 const mockSurveyModel = () => {
     return {
-        id: 'any_id',
+        id: 'any_survey_id',
         question: 'any_question1',
         answers: [{
                 image: 'any_img',

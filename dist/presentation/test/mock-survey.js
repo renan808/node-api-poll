@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.mockLoadSurveys = exports.mockRequest = exports.mockAddSurvey = void 0;
+exports.mockLoadSurveyById = exports.mockLoadSurveys = exports.mockRequest = exports.mockAddSurvey = void 0;
 const test_1 = require("@/domain/test");
 const mockAddSurvey = () => {
     class AddSurveyStub {
@@ -43,4 +43,15 @@ const mockLoadSurveys = () => {
     return new LoadSurveyStub();
 };
 exports.mockLoadSurveys = mockLoadSurveys;
+const mockLoadSurveyById = () => {
+    class LoadSurveyByIdStub {
+        loadById(id) {
+            return __awaiter(this, void 0, void 0, function* () {
+                return yield Promise.resolve((0, test_1.mockSurveyModel)());
+            });
+        }
+    }
+    return new LoadSurveyByIdStub();
+};
+exports.mockLoadSurveyById = mockLoadSurveyById;
 //# sourceMappingURL=mock-survey.js.map

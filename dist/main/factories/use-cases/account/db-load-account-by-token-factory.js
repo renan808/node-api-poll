@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.makeDbLoadAccountBytoken = void 0;
-const db_load_account_by_token_1 = require("@/data/usecases/account/load-account-by-token/db-load-account-by-token");
+const db_load_account_by_token_1 = require("@/data/use-cases/account/load-account-by-token/db-load-account-by-token");
 const jwt_adapter_1 = require("@/infra/cryptograpy/jwt-adapter/jwt-adapter");
 const account_mongo_repository_1 = require("@/infra/db/mongo-db/account-repository/account-mongo-repository");
 const env_1 = __importDefault(require("@/main/config/env"));
