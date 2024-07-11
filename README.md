@@ -1,4 +1,4 @@
-# Api for make survey
+#  API for making surveys
 ## 📖 Description
 this app can be used for create, edit and consult any type of surveys and this api can be consumed by any app
 this api was made in typescript using the test-oriented programming paradigm
